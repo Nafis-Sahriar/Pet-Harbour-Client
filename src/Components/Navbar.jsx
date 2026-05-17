@@ -30,7 +30,7 @@ export function Navbar()
       try {
         await authClient.signOut();
         toast.success("Logged out successfully!");
-        refetch(); // Refresh session state after sign out
+        refetch(); 
       }
       catch (error) {
         console.error("Sign Out Error:", error);
@@ -44,7 +44,6 @@ export function Navbar()
       <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           
-          {/* Logo Brand Section */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <div className="p-2 rounded-xl hover:bg-[#F4E7D3]/50 transition-all duration-200">
@@ -52,8 +51,7 @@ export function Navbar()
               </div>
             </Link>
           </div>
-
-          {/* Desktop Navigation Links */}
+    
           <div className="hidden md:flex gap-8 items-center">
             <Link href="/" className="font-medium text-[#2F2D2A] hover:text-[#80573A] transition-colors duration-200">
               Home
@@ -63,11 +61,11 @@ export function Navbar()
             </Link>
           </div>
 
-          {/* Desktop Auth / Profile Dropdown Controls */}
+          
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="relative">
-                {/* Trigger Button */}
+               
                 <button 
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center gap-3 p-1.5 rounded-full hover:bg-[#F4E7D3]/60 transition-all duration-200 border border-[#E8D1B1]/30 cursor-pointer"
@@ -89,7 +87,7 @@ export function Navbar()
                   </div>
                 </button>
 
-                {/* Dropdown Menu Overlaid Panel */}
+             
                 {isDropdownOpen && (
                   <div className="absolute right-0 top-14 w-56 bg-[#FFFCF6] border border-[#E8D1B1]/50 rounded-2xl shadow-xl flex flex-col py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                     <div className="px-4 py-3 border-b border-[#F4E7D3]">
@@ -135,7 +133,7 @@ export function Navbar()
             )}
           </div>
 
-          {/* Mobile Breakpoint Action Triggers */}
+        
           <div className="md:hidden flex gap-3 items-center">
             {user && (
               <Link href="/dashboard">
@@ -168,7 +166,7 @@ export function Navbar()
         </div>
       </div>
 
-      {/* Mobile Glassmorphic Menu Drawer */}
+      
       {isMenuOpen && (
         <div className="md:hidden px-4 pt-2 pb-6 space-y-3 bg-[#FFFCF6]/95 backdrop-blur-lg border-b border-[#E8D1B1]/60 animate-in slide-in-from-top-4 duration-300">
           <Link href="/" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 rounded-xl transition-all">
