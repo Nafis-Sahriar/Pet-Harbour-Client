@@ -2,7 +2,6 @@
 import { authClient } from "@/lib/auth-client";
 import {
   Button,
-  Description,
   FieldError,
   Form,
   Input,
@@ -14,8 +13,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { FaGithub } from "react-icons/fa";
-import { FaHexagonNodes } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
 const RegisterPage = () => { 
@@ -30,13 +27,13 @@ const RegisterPage = () => {
       const formData = new FormData(e.target);
       const userData = Object.fromEntries(formData.entries());
          
-      console.log("Sign Up Data:", userData);
+      // console.log("Sign Up Data:", userData);
 
       const {data, error} = await authClient.signUp.email({
         email: userData.email,
         password: userData.password,
         name: userData.name,
-        imageUrl: userData.imageUrl
+        image: userData.imageUrl
       });
 
       if (error) 
@@ -48,6 +45,7 @@ const RegisterPage = () => {
       {
         
         toast.success("Account created successfully! Please log in.");
+        // console.log(data);
         redirect("/");
       }
     }

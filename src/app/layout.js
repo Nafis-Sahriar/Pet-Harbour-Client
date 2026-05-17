@@ -1,6 +1,7 @@
 import { Figtree } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { Navbar } from "@/Components/Navbar";
 
 
 
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         
-
+        <Navbar></Navbar>
         {children}
         <Toaster></Toaster>
         </body>

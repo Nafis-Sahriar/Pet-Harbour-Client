@@ -15,7 +15,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
-import { FaHexagonNodes } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
 const LogInPage = () => {
@@ -34,10 +33,10 @@ const LogInPage = () => {
           });
 
           if (error) {
-            console.error("Sign In Error:", error);
+           
             toast.error("Error signing in: " + error.message);
           } else {
-            console.log("Sign In Success:", data);
+            // console.log("Sign In Success:", data);
             toast.success("Logged in successfully!");
             redirect("/");
           }
@@ -70,7 +69,7 @@ const LogInPage = () => {
   </div>
 
     
-  {/* Right Side */}
+
   <div className="bg-white rounded-lg py-20 px-10 w-full md:w-[60%]">
         
     <div className="mb-10 space-y-3">
