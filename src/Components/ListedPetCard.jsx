@@ -3,8 +3,13 @@ import Image from "next/image";
 import React from "react";
 
 import {Eye,  Pencil, Trash2, Inbox} from "lucide-react";
+import Link from "next/link";
+import { DeleteAlert } from "./PetDeleteAlert/DeleteAlert";
 
 const ListedPetCard = ({ pet }) => {
+
+
+  
 
     return (
 
@@ -15,9 +20,6 @@ const ListedPetCard = ({ pet }) => {
                 <Image  src={pet?.imageUrl} alt={pet?.petName} width={400} height={250}
                 className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"/>
                 
-
-               
-
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
 
                    
@@ -55,9 +57,12 @@ const ListedPetCard = ({ pet }) => {
    
 
                 <div className="grid grid-cols-2 gap-3 mt-6">
-                    <Button size="sm" className="bg-[#CFA77A] hover:bg-[#BB9368] text-white font-semibold rounded-2xl w-full" >
-                        <Eye size={16} /> View
-                    </Button>
+                    <Link href={`/all-pets/${pet?._id}`} className="w-full">
+                        <Button size="sm" className="bg-[#CFA77A] hover:bg-[#BB9368] text-white font-semibold rounded-2xl w-full" >
+                            <Eye size={16} /> View
+                        </Button>
+                    </Link>
+                 
 
                     <Button size="sm" variant="bordered"
                       className="border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] font-semibold rounded-2xl w-full ">
@@ -73,10 +78,9 @@ const ListedPetCard = ({ pet }) => {
 
                    
 
-                    <Button size="sm" className="bg-red-100 hover:bg-red-200 text-red-600 rounded-2xl font-semibold w-full" >
-                        <Trash2 size={16} />
-                        Delete
-                    </Button>
+                    <div size="sm"  >
+                        <DeleteAlert  pet={pet}/>
+                    </div>
 
                 </div>
             </div>

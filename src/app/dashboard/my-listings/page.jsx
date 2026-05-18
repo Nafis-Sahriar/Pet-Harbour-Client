@@ -79,7 +79,7 @@ const MyListingsPage = async () => {
 
             <div className='bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl p-8 '>
 
-                <h2 className='text-2xl font-bold text-[#2F2D2A]'>
+                <h2 className='text-2xl font-bold text-[#2F2D2A] mb-5'>
                     Your Listed Pets
                 </h2>
 
