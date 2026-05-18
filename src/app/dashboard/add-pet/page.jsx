@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from "@heroui/react";
 import { PawPrint } from "lucide-react";
+import { redirect } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -56,6 +57,15 @@ const AddPetPage = () => {
         });
 
         const data = await res.json();
+
+        if (res.ok) {
+            toast.success("Pet added successfully!");
+            redirect("/dashboard/my-listings");
+        } else {
+            toast.error(`Failed to add pet: ${data.message || "Unknown error"}`);
+        }
+
+     
 
     // console.log(data);
     };

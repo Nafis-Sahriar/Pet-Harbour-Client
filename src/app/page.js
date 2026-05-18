@@ -1,4 +1,5 @@
 import Banner from "@/Components/Banner";
+import FeaturedSectionHome from "@/Components/FeaturedSectionHome";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
@@ -10,6 +11,7 @@ export default function Home() {
     <div>
       
       <Banner></Banner>
+      <FeaturedSectionHome></FeaturedSectionHome>
      
     </div>
   );

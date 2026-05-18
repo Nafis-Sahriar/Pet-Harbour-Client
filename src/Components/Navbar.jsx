@@ -72,7 +72,7 @@ export function Navbar()
                 >
                   <Avatar className="w-9 h-9 rounded-full border-2 border-[#CFA77A] shadow-md">
                     <Avatar.Image
-                      src={user?.imageUrl || "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=400"}
+                      src={user?.imageUrl}
                       alt={user?.name}
                       referrerPolicy="no-referrer"
                       className="object-cover"
@@ -140,7 +140,7 @@ export function Navbar()
                 <Avatar className="w-11 h-11 rounded-full border-4 border-[#80573A] shadow-lg">
 
                       <Avatar.Image
-                        src={user?.image}
+                        src={user?.imageUrl}
                         alt={user?.name}
                         referrerPolicy="no-referrer"
                         className="object-cover"

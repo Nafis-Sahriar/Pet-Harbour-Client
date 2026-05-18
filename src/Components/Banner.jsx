@@ -3,18 +3,14 @@ import Image from 'next/image';
 import React from 'react';
 
 const Banner = () => {
-    return (
-        <div>
+  return (
+   <div>
      <div className="w-full bg-[#FFFFFF] overflow-hidden">
 
   <div className="max-w-7xl mx-auto px-4 py-16 lg:py-24">
 
     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
-
-    
       <div>
-
-   
         <div className="inline-flex items-center gap-2 bg-[#F4E7D3] border border-[#E8D1B1] px-4 py-2 rounded-full mb-6">
 
           <div className="w-2 h-2 rounded-full bg-[#CFA77A]"></div>
