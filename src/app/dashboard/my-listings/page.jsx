@@ -6,6 +6,7 @@ import { headers } from 'next/headers';
 
 import { Plus, PawPrint } from 'lucide-react';
 import { Button } from '@heroui/react';
+import ListedPetCard from '@/Components/ListedPetCard';
 
 const MyListingsPage = async () => {
 
@@ -89,9 +90,11 @@ const MyListingsPage = async () => {
                             You have not listed any pets yet. Click the Add New Pet button to create your first listing and help a pet find a loving home.
                         </p>
                     ) : 
-                    <div>
+                    <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
 
-                         {/*  ekhane map kore show korte hobe. */}
+                         {pets.map((pet) => (
+                            <ListedPetCard key={pet._id} pet={pet} />
+                        ))}
 
 
 
