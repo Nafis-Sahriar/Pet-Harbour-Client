@@ -10,7 +10,13 @@ import toast from "react-hot-toast";
 
 const AddPetPage = () => {
 
-    const {data:session} = authClient.useSession();
+    const {data:session, isPending} = authClient.useSession();
+
+    if (isPending) 
+    {
+        return <div>Loading...</div>;
+    }
+    
     const userData = session?.user;
     
     const user = {

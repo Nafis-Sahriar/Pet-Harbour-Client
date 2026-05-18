@@ -14,7 +14,11 @@ export function Navbar()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const { data: session, refetch } = authClient.useSession();
+  const { data: session, isPending, refetch } = authClient.useSession();
+
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
 
   const userData = session?.user;
   // console.log(userData);
