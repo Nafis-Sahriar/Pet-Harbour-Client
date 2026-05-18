@@ -1,46 +1,110 @@
-'use client'
-import { authClient } from '@/lib/auth-client';
+import Link from 'next/link';
 import React from 'react';
-// Ei page e user er ekta dashboard overview dekhabe+ ki ki pet list koreche oita dekhabne
-// tw ekhane ekta find api thakbe, jeta adoption request collection theke data fetch korbe, 
-// + oi data er moddhe userid match kore ene dekhiye dibo. 
 
-const MyListingsPage = () => {
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
-    // first of all, amake user ke pete hobe, server action use korbo.
-    const { data: session, isPending } = authClient.useSession();
+import { Plus, PawPrint } from 'lucide-react';
+import { Button } from '@heroui/react';
 
-    if (isPending) 
-    {
-        return <div>Loading...</div>;
-    }
+const MyListingsPage = async () => {
 
-    const userData = session?.user;
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
 
-     const user = {
-        id: userData?.id,
-        name: userData?.name,
-        email: userData?.email
-    };
+    const user = session?.user;
 
-    // console.log(user.id);
+    const id = user?.id;
 
+    const res = await fetch(`http://localhost:5000/allPetOfOwner/${id}`,
+        {
+            cache: "no-store"
+        }
+    );
 
-
-    
-
-
-
-
-
-
-
-
+    const pets = await res.json();
 
     return (
-        <div>
-            
+
+        <div className='space-y-10'>
+
+            <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6'>
+
+                <div>
+                    <div className='flex items-center gap-3'>
+                        <PawPrint  className='text-[#CFA77A]' size={32} />
+                        <h1 className='text-4xl font-black text-[#2F2D2A]'>
+                           Listings of {user?.name}
+                        </h1>
+                    </div>
+
+                    <p className='text-[#80573A] mt-4 text-lg max-w-2xl leading-relaxed'>
+                        Manage all your listed pets from one place.Track your pet listings, update pet details,
+                        and help loving adopters find their perfect companion.
+                    </p>
+
+                </div>
+
+
+                <div className='flex flex-col sm:flex-row items-start sm:items-center gap-5'>
+
+                  
+
+                    <div className='bg-[#FFFCF6] border border-[#E8D1B1] flex items-center justify-between rounded-3xl px-3 py-3 min-w-45'>
+
+                        <p className='text-[#80573A] font-bold'>
+                            You have Listed : 
+                        </p>
+
+                        <h1 className='text-3xl font-black text-[#2F2D2A] mt-2'>
+                            {pets.length} 
+                        </h1>
+
+                    </div>
+
+                    <Link href="/dashboard/add-pet">
+                        <Button className='bg-[#CFA77A] hover:bg-[#b98c5c] transition-all duration-300 text-white rounded-2xl px-8 py-5 font-bold flex items-center gap-3 shadow-sm'>
+                            <Plus size={20} />
+                            Add New Pet
+                        </Button>
+                    </Link>
+
+                </div>
+
+            </div>
+
+
+
+            <div className='bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl p-8 '>
+
+                <h2 className='text-2xl font-bold text-[#2F2D2A]'>
+                    Your Listed Pets
+                </h2>
+
+                {
+                    pets?.length === 0 ? (
+
+                        <p className='text-[#80573A] mt-4 text-lg'>
+                            You have not listed any pets yet. Click the Add New Pet button to create your first listing and help a pet find a loving home.
+                        </p>
+                    ) : 
+                    <div>
+
+                         {/*  ekhane map kore show korte hobe. */}
+
+
+
+
+                    </div>
+                }
+
+               
+
+            </div>
+
         </div>
+
     );
 };
 
