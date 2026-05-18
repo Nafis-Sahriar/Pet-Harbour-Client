@@ -11,7 +11,7 @@ const DashBoardSideBar = () => {
 
   return (
 
-    <div className="w-65 fixed min-h-[calc(100vh-80px)] bg-[#FFFCF6] border-r border-[#E8D1B1] p-5 flex flex-col justify-between">
+    <div className="w-65 fixed left-0 top-0 h-screen bg-[#FFFCF6] border-r border-[#E8D1B1] p-5 flex flex-col justify-between">
 
  
       <div>

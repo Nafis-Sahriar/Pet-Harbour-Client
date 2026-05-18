@@ -1,6 +1,4 @@
-
 import DashBoardSideBar from "@/Components/DashBoardSideBar";
-
 
 const DashboardLayout = ({ children }) => {
   return (
@@ -8,16 +6,12 @@ const DashboardLayout = ({ children }) => {
     <div className="min-h-screen bg-[#FFFCF6]">
 
       
+      <DashBoardSideBar />
 
-      <div className="flex">
-        
-        <DashBoardSideBar></DashBoardSideBar>
-
-        <div className="flex-1 p-6">
-          {children}
-        </div>
-
-      </div>
+      
+      <main className="ml-65 p-6">
+        {children}
+      </main>
 
     </div>
 
