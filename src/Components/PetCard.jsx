@@ -3,6 +3,7 @@
 import React from "react";
 import { Button, Chip } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const PetCard = ({pet}) => {
 
@@ -92,11 +93,18 @@ const PetCard = ({pet}) => {
         {/* BUTTONS */}
         <div className="flex items-center gap-3 mt-8">
 
-          <Button
+
+            <Link href={`/all-pets/${pet?._id}`}
+              className="flex-1 bg-[#CFA77A] hover:bg-[#BB9368] text-white font-semibold rounded-2xl h-12 flex items-center justify-center"
+            >
+                <Button
             className="flex-1 bg-[#CFA77A] hover:bg-[#BB9368] text-white font-semibold rounded-2xl h-12"
           >
             View Details
           </Button>
+            </Link>
+
+        
 
           <Button
             variant="bordered"

@@ -14,7 +14,7 @@ const AllPetsPage =async () => {
     });
 
     const pets = await res.json();
-    console.log(pets);
+    // console.log(pets);
 
 
 
