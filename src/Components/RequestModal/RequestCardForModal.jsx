@@ -1,13 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, Chip } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const RequestCardForModal = ({request}) => {
 
+    const router = useRouter();
+    
+    const [loading,setLoading] = useState(false);
+
     if(!request){
         return <div>Something went wrong....</div>
+    }
+
+    const reqId = request?._id;
+    const petId = request?.petId;
+
+    // console.log("Request ID:", reqId);
+    // console.log("Pet ID:", petId);
+
+    
+
+    const handleAccept = async() =>{
+        try{
+             setLoading(true);
+            const res = await fetch(`http://localhost:5000/acceptRequest/${reqId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    petId: petId
+                }),
+            });
+            // const data = await res.json();
+            // console.log(data);
+
+            if(res.ok)
+            {
+                toast.success("Request accepted successfully!");
+                router.refresh();
+            }
+        }
+        catch(error){
+            toast.error("Failed to Update Request.Please Try again.");
+        }
+        finally{
+            setLoading(false);
+        }
+    }
+
+    const handleReject = async() =>{
+        // to be implement . In sha Allah.
     }
 
   return (
@@ -38,16 +85,36 @@ const RequestCardForModal = ({request}) => {
 
       </div>
 
-      <div className="flex items-center gap-3 mt-6">
+      <div className="mt-6">
 
 
-        <Button size="sm" className="flex-1 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-semibold">
-          Accept
-        </Button>
+        {
+            request?.requestStatus==="pending"?
+            (
+                <div className="flex items-center gap-3 mt-6">
+                    <Button size="sm" isDisabled={loading} className="flex-1 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-semibold" onClick={handleAccept}>
+                      {loading? "Processing...":"Accept"}
+                    </Button>
+                    <Button size="sm" isDisabled={loading} className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 rounded-2xl font-semibold">
+                      {loading? "Processing...":"Reject"}
+                    </Button>
+                </div>
 
-        <Button size="sm" className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 rounded-2xl font-semibold">
-          Reject
-        </Button>
+            ):request?.requestStatus === "accepted"?(
+                <div className="mt-6">
+                    <div className="bg-green-100 text-green-700 rounded-2xl p-3 text-center font-semibold">
+                        Request Accepted
+                    </div>
+                </div>
+            ):    (
+                <div className="mt-6">
+                    <div className="bg-red-100 text-red-600 rounded-2xl p-3 text-center font-semibold">
+                        Request Rejected
+                    </div>
+                </div>
+
+            )
+            }
 
 
 

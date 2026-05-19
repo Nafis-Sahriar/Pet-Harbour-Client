@@ -23,8 +23,8 @@ const RequestRejected = ({ pet }) => {
 
             <div className="mt-6 bg-[#FFF5F5] border border-[#F5C2C7] rounded-2xl p-5">
 
-                <p className="text-red-500 leading-relaxed">The owner has rejected your request for{" "}
-                    <span className="font-semibold">{pet?.petName}</span>.
+                <p className="text-red-500 leading-relaxed">The owner has either rejected your request for{" "}
+                    <span className="font-semibold">{pet?.petName}</span>. or someone else has adopted the pet.
                     You can still explore and adopt other lovely pets on Pet Harbor.
                 </p>
             </div>
