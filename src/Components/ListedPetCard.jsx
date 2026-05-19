@@ -72,7 +72,7 @@ const ListedPetCard = ({ pet }) => {
                     
                 
                    <div size="sm">
-                            <RequestContainerModal></RequestContainerModal>
+                            <RequestContainerModal pet={pet}></RequestContainerModal>
                    </div>
 
                    
