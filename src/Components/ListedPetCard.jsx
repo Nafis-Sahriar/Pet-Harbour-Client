@@ -6,6 +6,7 @@ import {Eye,  Pencil, Trash2, Inbox} from "lucide-react";
 import Link from "next/link";
 import { DeleteAlert } from "./PetDeleteAlert/DeleteAlert";
 import EditPet from "./EditPetModal/EditPet";
+import { RequestContainerModal } from "./RequestModal/RequestContainerModal";
 
 const ListedPetCard = ({ pet }) => {
 
@@ -70,10 +71,9 @@ const ListedPetCard = ({ pet }) => {
                      
                     
                 
-                    <Button size="sm"  variant="bordered" className="border-[#E8D1B1] text-[#2F2D2A] font-semibold hover:bg-[#F4E7D3] rounded-2xl w-full " >
-                        <Inbox size={16} />
-                        Requests
-                    </Button>
+                   <div size="sm">
+                            <RequestContainerModal></RequestContainerModal>
+                   </div>
 
                    
 
