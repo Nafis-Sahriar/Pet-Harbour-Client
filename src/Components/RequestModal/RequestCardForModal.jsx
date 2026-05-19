@@ -54,7 +54,28 @@ const RequestCardForModal = ({request}) => {
     }
 
     const handleReject = async() =>{
-        // to be implement . In sha Allah.
+       
+        try{
+                setLoading(true);
+                const res = await fetch(`http://localhost:5000/rejectRequest/${reqId}`,{
+                    method:"PATCH"               
+                })
+                const data = await res.json();
+                console.log(data);
+
+                if(res.ok)
+                {
+                    toast.success("Request rejected successfully!");
+                    router.refresh();
+                }
+
+        }
+        catch(error){
+            toast.error("Failed to Update Request.Please Try again.");
+        }
+        finally{
+            setLoading(false);
+        }
     }
 
   return (
@@ -95,7 +116,7 @@ const RequestCardForModal = ({request}) => {
                     <Button size="sm" isDisabled={loading} className="flex-1 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-semibold" onClick={handleAccept}>
                       {loading? "Processing...":"Accept"}
                     </Button>
-                    <Button size="sm" isDisabled={loading} className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 rounded-2xl font-semibold">
+                    <Button size="sm" isDisabled={loading} className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 rounded-2xl font-semibold" onClick={handleReject}>
                       {loading? "Processing...":"Reject"}
                     </Button>
                 </div>
