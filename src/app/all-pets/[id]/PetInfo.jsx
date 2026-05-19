@@ -1,3 +1,4 @@
+import { Avatar } from "@heroui/react";
 import { MapPin, PawPrint } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -6,7 +7,18 @@ const PetInfo = ({ pet }) => {
     return (
         <div className="space-y-4">
 
-            <Image src={pet?.imageUrl} alt={pet?.petName} width={600} height={400} className="w-full  object-cover rounded-2xl" />
+            {/* <Image src={pet?.imageUrl} alt={pet?.petName} width={600} height={400} className="w-full  object-cover rounded-2xl" /> */}
+
+            <Avatar className="w-full h-120 rounded-t-xl rounded-b-none group-hover:scale-105 transition duration-500">
+            
+                    <Avatar.Image src={pet?.imageUrl} alt={pet?.petName} className="object-cover"/>
+            
+                    <Avatar.Fallback className="bg-[#F4E7D3] text-[#80573A] text-4xl font-black">
+            
+                        {pet?.petName?.charAt(0)}
+                        
+                    </Avatar.Fallback>
+                  </Avatar>
 
             <div className="space-y-1">
                 <div className="flex items-center gap-3 flex-wrap">

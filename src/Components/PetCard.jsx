@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button, Chip } from "@heroui/react";
+import { Avatar, Button, Chip } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,7 +14,16 @@ const PetCard = ({pet}) => {
    
       <div className="relative overflow-hidden">
 
-       <Image src={`${pet?.imageUrl}`} alt={pet?.petName} width={250} height={200} className="w-full h-63 object-cover group-hover:scale-105 transition duration-500" />
+       <Avatar className="w-full h-70 rounded-t-xl rounded-b-none group-hover:scale-105 transition duration-500">
+
+        <Avatar.Image src={pet?.imageUrl} alt={pet?.petName} className="object-cover"/>
+
+        <Avatar.Fallback className="bg-[#F4E7D3] text-[#80573A] text-4xl font-black">
+
+            {pet?.petName?.charAt(0)}
+            
+        </Avatar.Fallback>
+      </Avatar>
 
        
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
@@ -107,7 +116,7 @@ const PetCard = ({pet}) => {
         
 
           <Button
-            variant="bordered"
+            variant="outline"
             isDisabled={pet?.adoptionStatus !== "available"}
             className="flex-1 border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] rounded-2xl h-12 font-semibold"
           >

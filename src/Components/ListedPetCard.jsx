@@ -1,5 +1,4 @@
-import { Button, Chip } from "@heroui/react";
-import Image from "next/image";
+import { Avatar, Button, Chip } from "@heroui/react";
 import React from "react";
 
 import {Eye,  Pencil, Trash2, Inbox} from "lucide-react";
@@ -10,6 +9,8 @@ import { RequestContainerModal } from "./RequestModal/RequestContainerModal";
 
 const ListedPetCard = ({ pet }) => {
 
+    
+
 
   
 
@@ -19,8 +20,16 @@ const ListedPetCard = ({ pet }) => {
 
             <div className="relative overflow-hidden">
 
-                <Image  src={pet?.imageUrl} alt={pet?.petName} width={400} height={250}
-                className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"/>
+                {/* <Image  src={pet?.imageUrl} alt={pet?.petName} width={400} height={250}
+                className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"/> */}
+
+                <Avatar className="w-full h-48 rounded-2xl rounded-b-none group-hover:scale-105 transition duration-500">
+                    <Avatar.Image src={pet?.imageUrl}
+                        alt={pet?.petName}
+                        className="object-cover"/>
+                    <Avatar.Fallback className="bg-[#F4E7D3] text-[#80573A] text-4xl font-black"> {pet?.petName?.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+
                 
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
 

@@ -52,7 +52,7 @@ const EditPet = ({ pet }) => {
         isDisabled={pet?.adoptionStatus === "adopted"}
        className="bg-[#F4E7D3] text-[#2F2D2A] hover:bg-[#E8D1B1] rounded-2xl font-semibold">
         <PencilToSquare className="size-4" />
-        Edit
+        {pet?.adoptionStatus === "adopted" ? "Can't Edit" : "Edit Pet"}
       </Button>
 
       <Modal.Backdrop>
