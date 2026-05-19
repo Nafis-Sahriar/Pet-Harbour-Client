@@ -40,7 +40,7 @@ export async function RequestContainerModal ({ pet }) {
                             
                               </div>
             </Modal.Header>
-            <Modal.Body className="bg-[#FFFCF6] p-6 space-y-4 max-h-[500px] overflow-y-auto">
+            <Modal.Body className="bg-[#FFFCF6] p-6 space-y-4 max-h-125 overflow-y-auto">
 
                         {
                             requestData.length > 0 ? (

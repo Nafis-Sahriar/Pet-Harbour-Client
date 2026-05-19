@@ -2,10 +2,78 @@
 
 import React from "react";
 import { Avatar, Button, Chip } from "@heroui/react";
-import Image from "next/image";
 import Link from "next/link";
+import { Heart } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const PetCard = ({pet}) => {
+
+   const { data: session, isPending } = authClient.useSession();
+
+   if(isPending){
+    return <div>Loading...</div>
+   }
+    const currentUser = session?.user;
+
+    const userId = currentUser?.id;
+
+    const isOwner = userId === pet?.ownerId;
+
+    const id = pet?._id;
+
+    if(!pet){
+        return <div>Something went wrong...</div>}
+
+    // jodi owner hoy tahole wishlist button ta disable kore dibo. 
+
+    const {petName, imageUrl, species, adoptionStatus, age, gender, adoptionFee} = pet || {};
+
+  const handleWishList =async()=>{
+
+            try{
+
+                const wishListData ={
+                    petId: id,
+                    userId, 
+                    petName, 
+                    imageUrl,
+                    species,
+                    adoptionStatus,
+                    age,
+                    gender,
+                    adoptionFee,
+                    ownerId: pet?.ownerId,
+                    createdAt: new Date()
+                }
+
+                const res = await fetch("http://localhost:5000/addToWishlist", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(wishListData),
+                });
+
+               const data = await res.json();
+
+               if(data?.message ==="Already in WishList!")
+              {
+                toast.error("This pet is already in your WishList.");
+               }
+               else{
+                toast.success("Added to WishList");
+               }
+
+            }
+            catch(error){
+                toast.error("Failed to add to WishList. Please try again.");
+                console.error("Error adding to WishList:", error);
+            }
+
+  }
+
+
 
   return (
 
@@ -21,7 +89,7 @@ const PetCard = ({pet}) => {
         <Avatar.Fallback className="bg-[#F4E7D3] text-[#80573A] text-4xl font-black">
 
             {pet?.petName?.charAt(0)}
-            
+
         </Avatar.Fallback>
       </Avatar>
 
@@ -57,25 +125,27 @@ const PetCard = ({pet}) => {
     
       <div className="p-6">
 
-     
-        <h1 className="text-3xl font-black italic text-[#2F2D2A]">
+          <div className="flex justify-between items-center">
 
-          {pet?.petName}
+              <div>
+                 <h1 className="text-3xl font-black italic text-[#2F2D2A]">{pet?.petName}</h1>
+                 <p className="text-[#80573A] mt-1 text-lg">{pet?.breed} </p>
+             </div>
 
-        </h1>
+              <div>
+                <Button variant="outline" className="mt-3 border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] rounded-2xl font-semibold" onClick={handleWishList} 
+                isDisabled={isOwner ||pet?.adoptionStatus!=="available"}>
+                  Add to WishList <Heart />
+                </Button>
+              </div>
 
-        
-        <p className="text-[#80573A] mt-1 text-lg">
 
-          {pet?.breed}
-
-        </p>
-
+          </div>
       
-        <div className="flex flex-wrap gap-3 mt-5">
+        <div className="flex flex-wrap justify-between gap-3 mt-5">
 
           <div className="px-4 py-2 rounded-xl bg-[#F4E7D3] text-sm font-medium text-[#2F2D2A]">
-            Age: {pet?.age}
+            Age: {pet?.age} Years Old
           </div>
 
           <div className="px-4 py-2 rounded-xl bg-[#F4E7D3] text-sm font-medium text-[#2F2D2A]">
