@@ -13,6 +13,10 @@ const AllPetsPage =async () => {
         },
     });
 
+    if(!res.ok){
+        return <div>Failed to load pets.Please try again later.</div>
+    }
+
     const pets = await res.json();
     // console.log(pets);
 

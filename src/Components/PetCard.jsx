@@ -11,9 +11,9 @@ const PetCard = ({pet}) => {
 
    const { data: session, isPending } = authClient.useSession();
 
-   if(isPending){
-    return <div>Loading...</div>
-   }
+  //  if(isPending){
+  //   return <div>Loading...</div>
+  //  }
     const currentUser = session?.user;
 
     const userId = currentUser?.id;

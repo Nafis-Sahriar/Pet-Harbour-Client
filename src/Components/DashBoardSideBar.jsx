@@ -53,7 +53,7 @@ const DashBoardSideBar = () => {
           <Link
             href="/dashboard/wish-list"
             className={`px-4 py-3 rounded-xl font-medium transition-all duration-300
-              ${pathname === "/dashboard/add-pet" ? "bg-[#CFA77A] text-white" : "text-[#2F2D2A] hover:bg-[#F4E7D3]"}`}
+              ${pathname === "/dashboard/wish-list" ? "bg-[#CFA77A] text-white" : "text-[#2F2D2A] hover:bg-[#F4E7D3]"}`}
           >
             Wish List
           </Link>

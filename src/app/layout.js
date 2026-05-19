@@ -2,6 +2,7 @@ import { Figtree } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { Navbar } from "@/Components/Navbar";
+import { ToastContainer } from "react-toastify";
 
 
 
