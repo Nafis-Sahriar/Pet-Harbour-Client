@@ -6,8 +6,12 @@ import { PencilToSquare } from "@gravity-ui/icons";
 
 import {Button, FieldError, Input, Label, ListBox, Modal, Select, Surface, TextArea,TextField,
 } from "@heroui/react";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 const EditPet = ({ pet }) => {
+
+  const id = pet?._id;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +20,30 @@ const EditPet = ({ pet }) => {
 
     const updatedPetData = Object.fromEntries(formData.entries());
 
-    console.log(updatedPetData);
+      const res = await fetch(`http://localhost:5000/updatePet/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedPetData),
+      });
+
+      const data = await res.json();
+
+      if(res.ok)
+      {
+        toast.success("Pet updated successfully!");
+        redirect('/dashboard/my-listings');
+      }
+      else{
+        toast.error(`Failed to update pet: ${data.message}`);
+      }
+
+
+
+
+    // console.log(updatedPetData);
+    // console.log(id);
   };
 
   return (
