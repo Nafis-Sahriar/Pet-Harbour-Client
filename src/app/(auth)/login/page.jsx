@@ -42,6 +42,23 @@ const LogInPage = () => {
           }
   } 
 
+     const handleGoogleSignIn = async()=>{
+       
+      const data = await authClient.signIn.social({
+        provider: "google",
+      })
+
+      if(data)
+      {
+        toast.success("Signed in with Google successfully!");
+       
+      }
+      else
+      {
+        toast.error("Failed to sign in with Google. Please try again.");
+      }
+     }
+
 
 
 
@@ -144,6 +161,7 @@ const LogInPage = () => {
 
         <div className="flex gap-4 justify-center mt-4">
           <Button
+              onClick={handleGoogleSignIn}
             variant="bordered"
             className="text-[#2F2D2A] border-[#2F2D2A]/40 hover:bg-[#2F2D2A]/10 bg-[#f1e5d4]"
           >
