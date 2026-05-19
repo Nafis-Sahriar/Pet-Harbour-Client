@@ -1,5 +1,6 @@
 
 import EditPet from "@/Components/EditPetModal/EditPet";
+import { RequestContainerModal } from "@/Components/RequestModal/RequestContainerModal";
 import { Button } from "@heroui/react";
 import { CircleX, Pencil, ShieldAlert } from "lucide-react";
 import Link from "next/link";
@@ -70,7 +71,14 @@ const CanNotAdopt = ({ pet }) => {
                 </Button>
             </Link> */}
 
+         <div className="flex flex-col md:flex-row gap-5">
             <EditPet pet={pet} />
+
+            <div size="sm">
+                    <RequestContainerModal pet={pet}></RequestContainerModal>
+            </div>
+         </div>
+            
 
             
         </div>

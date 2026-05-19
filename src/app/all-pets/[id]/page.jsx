@@ -8,8 +8,8 @@ import RequestSubmitted from './RequestSubmitted';
 
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
-import Adopted from './Adopted';
 import AdoptedPage from './Adopted';
+import AdoptedForOwner from './AdoptedForOwner';
 
 const PetDetailsPage = async ({ params }) => {
 
@@ -39,23 +39,34 @@ const PetDetailsPage = async ({ params }) => {
 
                 <PetInfo pet={pet} />
 
+                {/* nested condition apply korte hobe. First of all, dekha lagbe pet wer adoption status, jodi adopted hoy, tahole
+                 then tar vitore dekhte hobe owner ke, jodi thik hoy, tahole owner er adoption component dekhabo.  */}
+
                 {
+                    pet?.adoptionStatus === "adopted" ? (
 
-                    isOwner ? (<CanNotAdopt pet={pet} />) 
-                    : adoptionRequest?.requestStatus === "pending" ? 
-                    ( <RequestSubmitted pet={pet} />) 
-                    : adoptionRequest?.requestStatus === "accepted" ? (
+                        isOwner ? <AdoptedForOwner pet={pet} /> : <AdoptedPage pet={pet} />
+
+                    ) : // ebar ekahne ashbe jodi satus adopted na hoy.
+                    
+                    isOwner ? (
+                        <CanNotAdopt pet={pet} />
+                    ) : 
+                    adoptionRequest?.requestStatus === "pending" ? (
+                        <RequestSubmitted pet={pet} />
+
+                    ) :adoptionRequest?.requestStatus === "accepted" ? (
+
                         <RequestAccepted pet={pet} />
-                    ) 
-                    : adoptionRequest?.requestStatus === "rejected" ? (
+                    ) : 
+                    adoptionRequest?.requestStatus === "rejected" ? (
                         <RequestRejected pet={pet} />
-                    ) 
-                    : 
-                    (
-                        pet?.adoptionStatus === "available" ? <AdoptionForm pet={pet} /> : <AdoptedPage pet={pet}></AdoptedPage>
-                        // eta hobe sobar last e , jodi ektaw na true hoy.
-                    )
 
+                    ) 
+                    :(
+                        // last e ektaw true na hole, form dekhabo.
+                        <AdoptionForm pet={pet} />
+                    )
                 }
 
             </div>
