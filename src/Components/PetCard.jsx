@@ -125,7 +125,7 @@ const PetCard = ({pet}) => {
     
       <div className="p-6">
 
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center">
 
               <div>
                  <h1 className="text-3xl font-black italic text-[#2F2D2A]">{pet?.petName}</h1>
@@ -138,7 +138,6 @@ const PetCard = ({pet}) => {
                   Add to WishList <Heart />
                 </Button>
               </div>
-
 
           </div>
       
