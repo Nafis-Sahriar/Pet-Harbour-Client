@@ -1,11 +1,26 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 const DashBoardSideBar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
+   const handleSignOut = async () => {
+      try {
+        await authClient.signOut();
+        toast.success("Logged out successfully!");
+        router.push("/login");
+      }
+      catch (error) {
+        console.error("Sign Out Error:", error);
+        toast.error("Failed to log out.");
+      }
+    }
 
   return (
     <div className="w-65 fixed left-0 top-0 h-screen bg-[#FFFCF6] border-r border-[#E8D1B1] p-5 flex flex-col justify-between">
@@ -60,7 +75,7 @@ const DashBoardSideBar = () => {
         </div>
       </div>
       <div>
-        <Button className="w-full px-4 py-3 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-medium transition duration-300">
+        <Button onClick={handleSignOut} className="w-full px-4 py-3 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-medium transition duration-300">
           Logout
         </Button>
       </div>

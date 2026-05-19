@@ -134,7 +134,7 @@ const PetCard = ({pet}) => {
 
               <div>
                 <Button variant="outline" className="mt-3 border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] rounded-2xl font-semibold" onClick={handleWishList} 
-                isDisabled={isOwner ||pet?.adoptionStatus!=="available"}>
+                isDisabled={isOwner ||pet?.adoptionStatus!=="available" || !currentUser}>
                   Add to WishList <Heart />
                 </Button>
               </div>

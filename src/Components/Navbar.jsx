@@ -7,12 +7,14 @@ import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 
 export function Navbar() 
 {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const router = useRouter();
 
   const { data: session, isPending, refetch } = authClient.useSession();
 
@@ -34,6 +36,7 @@ export function Navbar()
       try {
         await authClient.signOut();
         toast.success("Logged out successfully!");
+        router.push("/login");
         refetch(); 
       }
       catch (error) {
