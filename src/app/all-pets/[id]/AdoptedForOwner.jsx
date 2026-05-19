@@ -11,8 +11,8 @@ const AdoptedForOwnerPage = ({ pet }) => {
                 <CheckCircle2 className='text-green-600' size={42}/>
             </div>
 
-            <h1 className='text-4xl lg:text-5xl font-black text-[#2F2D2A] italic mt-8 leading-tight'>
-                {pet?.petName} Has Been Adopted
+            <h1 className='text-2xl lg:text-4xl font-black text-[#2F2D2A] italic mt-8 leading-tight'>
+                Your {pet?.petName} Has Been Adopted
             </h1>
 
 
@@ -26,7 +26,7 @@ const AdoptedForOwnerPage = ({ pet }) => {
                 <p className='text-[#d30808] font-semibold'>
                     You can not edit this pet anymore,someone else owns {pet?.petName} now.
                 </p>
-                
+
             </div>
 
             <div size="sm" className="mt-10">

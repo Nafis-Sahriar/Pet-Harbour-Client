@@ -12,12 +12,12 @@ const AdoptedPage = ({ pet }) => {
                 <HeartCrack  className='text-[#CFA77A]' size={42}/>
             </div>
 
-            <h1 className='text-4xl lg:text-5xl font-black text-[#2F2D2A] italic mt-8 leading-tight'>
-                {pet?.petName} is Already Adopted
+            <h1 className='text-2xl lg:text-4xl font-black text-[#2F2D2A] italic mt-8 leading-tight'>
+                {pet?.petName} has Already got adopted!
             </h1>
 
             <p className='text-[#80573A] text-lg leading-relaxed mt-6 max-w-xl'>
-                {pet?.petName} has already found a new home.but there are still many adorable pets waiting
+                {pet?.petName} already found a new home.but there are still many adorable pets waiting
                 for someone like you.
             </p>
             <div className='mt-8 bg-[#F4E7D3] border border-[#E8D1B1] rounded-2xl px-6 py-4'>

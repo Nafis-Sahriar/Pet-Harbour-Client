@@ -3,8 +3,7 @@ import React from 'react';
 
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
-
-import { Plus, PawPrint } from 'lucide-react';
+import { Plus, PawPrint, CheckCircle2, Clock3, Panda } from 'lucide-react';
 import { Button } from '@heroui/react';
 import ListedPetCard from '@/Components/ListedPetCard';
 
@@ -26,6 +25,11 @@ const MyListingsPage = async () => {
 
     const pets = await res.json();
 
+    // ebar count kore dashboard type data show kore dei. 
+    const totalListed = pets?.length;
+    const availablePets = pets?.filter(pet =>pet.adoptionStatus !=="adopted").length;
+    const adoptedPets = pets?.filter(pet => pet.adoptionStatus === "adopted").length;
+
     return (
 
         <div className='space-y-10'>
@@ -44,35 +48,66 @@ const MyListingsPage = async () => {
                         Manage all your listed pets from one place.Track your pet listings, update pet details,
                         and help loving adopters find their perfect companion.
                     </p>
-
                 </div>
 
-
                 <div className='flex flex-col sm:flex-row items-start sm:items-center gap-5'>
-
-                  
-
-                    <div className='bg-[#FFFCF6] border border-[#E8D1B1] flex items-center justify-between rounded-3xl px-3 py-3 min-w-45'>
-
-                        <p className='text-[#80573A] font-bold'>
-                            You have Listed : 
-                        </p>
-
-                        <h1 className='text-3xl font-black text-[#2F2D2A] mt-2'>
-                            {pets.length} 
-                        </h1>
-
-                    </div>
-
                     <Link href="/dashboard/add-pet">
                         <Button className='bg-[#CFA77A] hover:bg-[#b98c5c] transition-all duration-300 text-white rounded-2xl px-8 py-5 font-bold flex items-center gap-3 shadow-sm'>
                             <Plus size={20} />
                             Add New Pet
                         </Button>
                     </Link>
+                </div>
+
+            </div>
+
+            <div>
+                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'>
+                <div className='bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl p-6 shadow-sm'>
+                    <div className='flex items-center justify-between'>
+                        <div>
+                            <p className='text-[#80573A] font-medium'> Total Listed</p>
+                            <h1 className='text-5xl font-black text-[#2F2D2A] mt-3'>{totalListed} </h1>
+                        </div>
+                        <div className='w-16 h-16 rounded-2xl bg-[#F4E7D3] flex items-center justify-center'>
+                            <PawPrint className='text-[#CFA77A]' size={30}/>
+                        </div>
+                    </div>
 
                 </div>
 
+                <div className='bg-[#FFFCF6] border border-yellow-200 rounded-3xl p-6 shadow-sm'>
+                    <div className='flex items-center justify-between'>
+                        <div>
+                            <p className='text-yellow-600 font-medium'>Available</p>
+                            <h1 className='text-5xl font-black text-[#2F2D2A] mt-3'>{availablePets}</h1>
+                        </div>
+
+                        <div className='w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center'>
+                            <Panda className='text-yellow-500' size={30} />
+                        </div>
+
+                    </div>
+
+                </div>
+
+         
+
+                <div className='bg-[#FFFCF6] border border-green-200 rounded-3xl p-6 shadow-sm'>
+
+                    <div className='flex items-center justify-between'>
+                        <div>
+                            <p className='text-green-600 font-medium'>Adopted</p>
+                            <h1 className='text-5xl font-black text-[#2F2D2A] mt-3'>{adoptedPets}</h1>
+                        </div>
+                        <div className='w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center'>
+                            <CheckCircle2 className='text-green-600' size={30} />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
             </div>
 
 
