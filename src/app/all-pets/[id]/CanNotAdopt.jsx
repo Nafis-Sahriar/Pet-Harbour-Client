@@ -34,9 +34,12 @@ const CanNotAdopt = ({ pet }) => {
                 </div>
 
                 <div className="w-full sm:w-auto">
+                    <Link href={'/dashboard/my-listings'}>
+
                     <Button className="w-full sm:w-auto rounded-2xl bg-[#CFA77A] hover:bg-[#b98c5c] text-white px-8 py-5 md:py-6 font-semibold text-sm md:text-base">
                         Go to My Listing
                     </Button>
+                    </Link>
                 </div>
             </div>
 

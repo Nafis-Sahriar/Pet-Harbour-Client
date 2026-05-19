@@ -176,6 +176,7 @@ const MyRequestPage = async () => {
 
                                 <Table.Cell className='flex flex-col md:flex-row md:justify-center gap-4'>
 
+                                 <Link href={`/all-pets/${request.petId}`}>
                                     <Button
                                         size="sm"
                                         variant="bordered"
@@ -183,6 +184,7 @@ const MyRequestPage = async () => {
                                     >
                                         View
                                     </Button>
+                                    </Link>
 
                                     <div>
                                         <DeleteRequest request={request} />

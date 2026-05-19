@@ -1,5 +1,6 @@
 import { Button } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Banner = () => {
@@ -33,13 +34,18 @@ const Banner = () => {
    
         <div className="flex flex-wrap items-center gap-4 mt-10">
 
+        <Link href="/all-pets">
           <Button className="px-8 py-6 bg-[#a0723e] hover:bg-[#BB9368] text-white font-semibold rounded-2xl transition duration-300 shadow-lg shadow-[#CFA77A]/30">
             Adopt Now
           </Button>
-
+        </Link>
+        <Link href="/adoption-policy">
           <Button variant='outline' className="px-8 py-6 border-2 border-[#E8D1B1] hover:bg-[#F4E7D3] text-[#2F2D2A] font-semibold rounded-2xl transition duration-300">
-            Browse Pet
+            About Our Adoption Policy
           </Button>
+        </Link>
+        
+          
         </div>
       </div>
 

@@ -35,7 +35,8 @@ export function DeleteRequest({request})
     }
   return (
     <AlertDialog>
-      <Button variant="danger" className="w-full">Delete Request<TrashBin/> </Button>
+      <Button 
+      variant="danger" className="w-full">Delete Request<TrashBin/> </Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-100">

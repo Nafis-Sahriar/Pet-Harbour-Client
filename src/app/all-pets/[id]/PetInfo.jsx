@@ -1,6 +1,5 @@
 import { Avatar } from "@heroui/react";
 import { MapPin, PawPrint } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 
 const PetInfo = ({ pet }) => {
