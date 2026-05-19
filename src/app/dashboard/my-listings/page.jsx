@@ -86,9 +86,25 @@ const MyListingsPage = async () => {
                 {
                     pets?.length === 0 ? (
 
-                        <p className='text-[#80573A] mt-4 text-lg'>
-                            You have not listed any pets yet. Click the Add New Pet button to create your first listing and help a pet find a loving home.
-                        </p>
+                         <div className='flex flex-col items-center gap-4 py-20'>
+                            
+                            <PawPrint className='text-[#CFA77A]' size={50} />
+
+                            <h2 className='text-2xl font-bold text-[#2F2D2A]'>No Pets Found</h2>
+
+                            <p className='text-[#80573A]'>You have not listed any pets yet.</p>
+                            <p className='text-[#80573A] text-sm'>But Dont worry, you care one click away from adding a pet in PetHarbor!</p>
+
+                            <Link href="/dashboard/add-pet">
+
+                                <Button className='bg-[#CFA77A] hover:bg-[#b98c5c] text-white rounded-2xl px-8 py-5 font-bold flex items-center gap-3 shadow-sm'>
+                                   
+                                   + Add New Pet
+
+                                </Button>
+                            </Link>
+
+                        </div>
                     ) : 
                     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
 

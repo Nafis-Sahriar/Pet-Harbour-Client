@@ -5,6 +5,7 @@ import React from "react";
 import {Eye,  Pencil, Trash2, Inbox} from "lucide-react";
 import Link from "next/link";
 import { DeleteAlert } from "./PetDeleteAlert/DeleteAlert";
+import EditPet from "./EditPetModal/EditPet";
 
 const ListedPetCard = ({ pet }) => {
 
@@ -49,7 +50,7 @@ const ListedPetCard = ({ pet }) => {
                         <h1 className="text-2xl font-black text-[#2F2D2A] leading-tight">
                             {pet?.petName}
                         </h1>
-                        <p className="text-[#80573A] mt-1 text-sm">{pet?.species},{pet?.breed}</p>
+                        <p className="text-[#80573A] mt-1 text-sm">{pet?.species}-{pet?.breed}</p>
                     </div>
 
                 </div>
@@ -58,17 +59,15 @@ const ListedPetCard = ({ pet }) => {
 
                 <div className="grid grid-cols-2 gap-3 mt-6">
                     <Link href={`/all-pets/${pet?._id}`} className="w-full">
-                        <Button size="sm" className="bg-[#CFA77A] hover:bg-[#BB9368] text-white font-semibold rounded-2xl w-full" >
+                        <Button size="sm" className="bg-[#ac875d] hover:bg-[#BB9368] text-white font-semibold rounded-2xl w-full" >
                             <Eye size={16} /> View
                         </Button>
                     </Link>
                  
-
-                    <Button size="sm" variant="bordered"
-                      className="border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] font-semibold rounded-2xl w-full ">
-                        <Pencil size={16} />
-                        Edit
-                        </Button>
+                            <div className="flex justify-end">
+                                <EditPet pet={pet} />
+                            </div>
+                     
                     
                 
                     <Button size="sm"  variant="bordered" className="border-[#E8D1B1] text-[#2F2D2A] font-semibold hover:bg-[#F4E7D3] rounded-2xl w-full " >

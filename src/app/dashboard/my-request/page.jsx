@@ -2,12 +2,11 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import {  CheckCircle2,  Clock3,PawPrint,  XCircle} from 'lucide-react';
 import React from 'react';
-import { RequestTable } from '@/Components/RequestTable';
-import { Table } from '@heroui/react';
+import { Button, Table } from '@heroui/react';
+import { DeleteRequest } from '@/Components/RequestDeleteAlert/DeleteRequest';
+import Link from 'next/link';
 
 const MyRequestPage = async () => {
-
-   
 
     const session = await auth.api.getSession({
         headers: await headers()
@@ -25,10 +24,10 @@ const MyRequestPage = async () => {
     );
     const requests = await res.json();
 
-    const totalRequests = requests.length;
-    const pendingRequests = requests.filter(request =>request.requestStatus==="pending").length;
-    const approvedRequests = requests.filter(request=>request.requestStatus==="accepted").length;
-    const rejectedRequests = requests.filter(request => request.requestStatus ==="rejected" ).length;
+    const totalRequests = requests?.length;
+    const pendingRequests = requests?.filter(request =>request.requestStatus==="pending").length;
+    const approvedRequests = requests?.filter(request=>request.requestStatus==="accepted").length;
+    const rejectedRequests = requests?.filter(request => request.requestStatus ==="rejected" ).length;
 
     return (
 
@@ -99,54 +98,116 @@ const MyRequestPage = async () => {
 
             </div>
 
-         
 
             <div className='bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl p-10'>
 
-                <h2 className='text-2xl font-bold text-[#2F2D2A]'>
+                {
+                    requests.length === 0 ? 
+                    (
+                        <div className='flex flex-col items-center gap-4 py-20'>
+                            
+                            <PawPrint className='text-[#CFA77A]' size={50} />
+
+                            <h2 className='text-2xl font-bold text-[#2F2D2A]'>No Requests Found</h2>
+
+                            <p className='text-[#80573A]'>You have not made any adoption requests yet.</p>
+                            <p className='text-[#80573A] text-sm'>Lets have some pets?</p>
+
+                            <Link href="/all-pets">
+
+                                <Button className='bg-[#CFA77A] hover:bg-[#b98c5c] text-white rounded-2xl px-8 py-5 font-bold flex items-center gap-3 shadow-sm'>
+                                   
+                                    Explore Pets
+
+                                </Button>
+                            </Link>
+
+                        </div>
+                    ): 
+                    <div>
+                     <h2 className='text-2xl font-bold text-[#2F2D2A] mb-10 italic'>
                     Request List and Status
                 </h2>
 
                 <div>
-                    <Table>
-      <Table.ScrollContainer>
-        <Table.Content aria-label="Team members" className="min-w-[600px]">
-          <Table.Header>
-            <Table.Column isRowHeader>Name</Table.Column>
-            <Table.Column>Role</Table.Column>
-            <Table.Column>Status</Table.Column>
-            <Table.Column>Email</Table.Column>
-          </Table.Header>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>Kate Moore</Table.Cell>
-              <Table.Cell>CEO</Table.Cell>
-              <Table.Cell>Active</Table.Cell>
-              <Table.Cell>kate@acme.com</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>John Smith</Table.Cell>
-              <Table.Cell>CTO</Table.Cell>
-              <Table.Cell>Active</Table.Cell>
-              <Table.Cell>john@acme.com</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Sara Johnson</Table.Cell>
-              <Table.Cell>CMO</Table.Cell>
-              <Table.Cell>On Leave</Table.Cell>
-              <Table.Cell>sara@acme.com</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Michael Brown</Table.Cell>
-              <Table.Cell>CFO</Table.Cell>
-              <Table.Cell>Active</Table.Cell>
-              <Table.Cell>michael@acme.com</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table.Content>
-      </Table.ScrollContainer>
-    </Table>
+                    <Table className='bg-[#E8D1B1]'>
+                        <Table.ScrollContainer>
+                            <Table.Content aria-label="Team members" >
+                            <Table.Header className="bg-[#E8D1B1] text-[#2F2D2A]">
+                                <Table.Column isRowHeader className="bg-[#E8D1B1] text-[#2F2D2A] font-bold">
+                                    PetName
+                                </Table.Column>
+                                <Table.Column className="bg-[#E8D1B1] font-bold text-[#2F2D2A]">
+                                    Request Date
+                                </Table.Column>
+                                <Table.Column className="bg-[#E8D1B1] font-bold text-[#2F2D2A]">
+                                    Status
+                                </Table.Column>
+                                <Table.Column className="bg-[#E8D1B1] font-bold text-[#2F2D2A]">
+                                    Pickup Date
+                                </Table.Column>
+                                <Table.Column className="bg-[#E8D1B1] font-bold text-[#2F2D2A] flex justify-center">
+                                    Actions
+                                </Table.Column>
+                            </Table.Header>
+                            <Table.Body>
+
+
+                  {
+                     requests.map((request) => (
+
+                            <Table.Row key={request._id} className='hover:bg-[#f6f4f0]'>
+
+                                <Table.Cell className='font-bold italic text-[#2F2D2A]'>
+                                    {request.petName}
+                                </Table.Cell>
+
+                                <Table.Cell>
+                                    {request.createdAt.split("T")[0]}
+                                </Table.Cell>
+
+                                <Table.Cell>
+                                    {request.requestStatus}
+                                </Table.Cell>
+
+                                <Table.Cell>
+                                    {request.pickupDate}
+                                </Table.Cell>
+
+                                <Table.Cell className='flex flex-col md:flex-row md:justify-center gap-4'>
+
+                                    <Button
+                                        size="sm"
+                                        variant="bordered"
+                                        className="border-[#E8D1B1] text-[#2F2D2A] font-semibold bg-[#F4E7D3] hover:bg-[#E8D1B1] rounded-2xl w-full md:w-auto"
+                                    >
+                                        View
+                                    </Button>
+
+                                    <div>
+                                        <DeleteRequest request={request} />
+                                    </div>
+
+                                    
+
+                                </Table.Cell>
+
+                            </Table.Row>
+
+                                    ))
+                                }
+
+                                </Table.Body>
+                            </Table.Content>
+                        </Table.ScrollContainer>
+                        </Table>
                 </div>
+         </div>
+                }
+
+               
+
+               
 
             
 

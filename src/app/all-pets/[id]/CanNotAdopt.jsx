@@ -1,3 +1,5 @@
+
+import EditPet from "@/Components/EditPetModal/EditPet";
 import { Button } from "@heroui/react";
 import { CircleX, Pencil, ShieldAlert } from "lucide-react";
 import Link from "next/link";
@@ -61,12 +63,16 @@ const CanNotAdopt = ({ pet }) => {
 
         {/* BUTTON */}
         <div className="mt-6 md:mt-8">
-            <Link href={`/update-pet/${pet._id}`} className="block sm:inline-block">
+            {/* <Link href={`/update-pet/${pet._id}`} className="block sm:inline-block">
                 <Button className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-2xl bg-[#CFA77A] hover:bg-[#b98c5c] text-white px-8 py-5 md:py-6 font-semibold text-sm md:text-base">
                     <Pencil size={18} />
                     Edit Pet
                 </Button>
-            </Link>
+            </Link> */}
+
+            <EditPet pet={pet} />
+
+            
         </div>
 
     </div>
