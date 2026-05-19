@@ -7,10 +7,12 @@ import { PencilToSquare } from "@gravity-ui/icons";
 import {Button, FieldError, Input, Label, ListBox, Modal, Select, Surface, TextArea,TextField,
 } from "@heroui/react";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 const EditPet = ({ pet }) => {
 
+  const router = useRouter();
   const id = pet?._id;
 
   const onSubmit = async (e) => {
@@ -20,10 +22,14 @@ const EditPet = ({ pet }) => {
 
     const updatedPetData = Object.fromEntries(formData.entries());
 
+      const {data:tokenData} = await authClient.token();
+      const token = tokenData?.token;
+
       const res = await fetch(`http://localhost:5000/updatePet/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`
         },
         body: JSON.stringify(updatedPetData),
       });
@@ -33,7 +39,7 @@ const EditPet = ({ pet }) => {
       if(res.ok)
       {
         toast.success("Pet updated successfully!");
-        redirect('/dashboard/my-listings');
+        router.push(`/all-pets/${id}`);
       }
       else{
         toast.error(`Failed to update pet: ${data.message}`);
@@ -297,7 +303,8 @@ const EditPet = ({ pet }) => {
                     </Button>
 
                     <Button
-                      type="submit"
+                      type="submit" 
+                      slot="close"
                       className="rounded-2xl bg-[#CFA77A] hover:bg-[#BB9368] text-white px-8"
                     >
                       Update Pet
