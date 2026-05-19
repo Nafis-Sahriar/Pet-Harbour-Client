@@ -8,6 +8,8 @@ import RequestSubmitted from './RequestSubmitted';
 
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
+import Adopted from './Adopted';
+import AdoptedPage from './Adopted';
 
 const PetDetailsPage = async ({ params }) => {
 
@@ -50,9 +52,8 @@ const PetDetailsPage = async ({ params }) => {
                     ) 
                     : 
                     (
-                        <AdoptionForm pet={pet} />
+                        pet?.adoptionStatus === "available" ? <AdoptionForm pet={pet} /> : <AdoptedPage pet={pet}></AdoptedPage>
                         // eta hobe sobar last e , jodi ektaw na true hoy.
-
                     )
 
                 }

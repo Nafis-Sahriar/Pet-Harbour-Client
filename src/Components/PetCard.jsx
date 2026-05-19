@@ -108,9 +108,12 @@ const PetCard = ({pet}) => {
 
           <Button
             variant="bordered"
+            isDisabled={pet?.adoptionStatus !== "available"}
             className="flex-1 border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] rounded-2xl h-12 font-semibold"
           >
-            Adopt Now
+           {
+              pet?.adoptionStatus === "available"?"Adopt Now": "Adopted"
+           }
           </Button>
 
         </div>
