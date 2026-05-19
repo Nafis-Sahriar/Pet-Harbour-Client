@@ -27,6 +27,8 @@ const AddPetPage = () => {
 
     // console.log(user)
 
+    
+
 
 
     const onSubmit = async (e) => {
@@ -36,6 +38,8 @@ const AddPetPage = () => {
             toast.error("User not authenticated. Please log in to add a pet.");
             return;
         }
+
+   
 
         const formData = new FormData(e.currentTarget);
         const petData = Object.fromEntries(formData.entries());
@@ -54,10 +58,13 @@ const AddPetPage = () => {
 
         // console.log(finalPetData);
 
+     const {data:tokenData} = await authClient.token();
+     const token = tokenData?.token;
     const res = await fetch("http://localhost:5000/addPet", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
         },
         body: JSON.stringify(finalPetData),
         });
