@@ -36,18 +36,31 @@ const RegisterPage = () => {
         image: userData.imageUrl
       });
 
+      if(data)
+      {
+        redirect('/');
+      }
       if (error) 
       {
         
         toast.error("Error signing up: " + error.message);
       } 
-      else 
-      {
-        
-        toast.success("Account created successfully! Please log in.");
-        // console.log(data);
-        redirect("/");
-      }
+    }
+
+    const handleGoogleSignUp = async() =>{
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+
+        if(data)
+        {
+            toast.success("Signed up with Google successfully!");
+            
+        }
+        else        
+        {
+            toast.error("Failed to sign up with Google. Please try again.");
+        }
     }
 
 
@@ -221,7 +234,7 @@ const RegisterPage = () => {
               <Button
                 variant="bordered"
                 className="text-[#2F2D2A] border-[#2F2D2A]/40 hover:bg-[#2F2D2A]/10 bg-[#f1e5d4]"
-            
+                onClick={handleGoogleSignUp}
               >
                 Google <FcGoogle className="ml-2" />
               </Button>
