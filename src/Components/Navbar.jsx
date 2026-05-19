@@ -18,9 +18,9 @@ export function Navbar()
 
   const { data: session, isPending, refetch } = authClient.useSession();
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+  // if (isPending) {
+  //   return <div>Loading...</div>;
+  // }
 
   const userData = session?.user;
   // console.log(userData);
@@ -54,7 +54,7 @@ export function Navbar()
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <div className="p-2 rounded-xl hover:bg-[#F4E7D3]/50 transition-all duration-200">
-                <Image src="/logo.png" alt="Logo" width={100} height={40} className="object-contain" />
+                <Image src="/logo.png" alt="Logo" width={100} height={40} className="object-contain" loading="eager" />
               </div>
             </Link>
           </div>
@@ -68,11 +68,11 @@ export function Navbar()
             </Link>
           </div>
 
-          
-          <div className="hidden md:flex items-center gap-4">
+          {
+            isPending ? <p>Loading......</p>
+            :<div className="hidden md:flex items-center gap-4">
             {user ? (
               <div className="relative">
-               
                 <button 
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center gap-3 p-1.5 rounded-full hover:bg-[#F4E7D3]/60 transition-all duration-200 border border-[#E8D1B1]/30 cursor-pointer"
@@ -140,6 +140,9 @@ export function Navbar()
             )}
           </div>
 
+          }
+          
+
         
           <div className="md:hidden flex gap-3 items-center">
             {user && (
@@ -185,10 +188,10 @@ export function Navbar()
 
           {user ? (
             <div className="pt-2 border-t border-[#E8D1B1]/40 space-y-1">
-              <Link href="/dashboard" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
+              <Link href="/dashboard" onClick={() =>setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
                 <LayoutDashboard className="w-5 h-5 text-[#CFA77A]" /> Dashboard
               </Link>
-              <Link href="/settings" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
+              <Link href="/settings" onClick={()=>setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
                 <User className="w-5 h-5 text-[#CFA77A]" /> My Profile
               </Link>
               <button className="w-full text-left px-4 py-3 text-base font-medium text-red-600 hover:bg-red-50 flex items-center gap-3 rounded-xl transition-all cursor-pointer" onClick={handleSignOut}>
@@ -197,12 +200,12 @@ export function Navbar()
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4 pt-2 border-t border-[#E8D1B1]/40">
-              <Link href="/login" onClick={() => setIsMenuOpen(false)} className="w-full">
+              <Link href="/login" onClick={()=>setIsMenuOpen(false)} className="w-full">
                 <Button variant="bordered" className="w-full rounded-xl border-[#CFA77A] text-[#2F2D2A] font-semibold">
                   Login
                 </Button>
               </Link>
-              <Link href="/register" onClick={() => setIsMenuOpen(false)} className="w-full">
+              <Link href="/register" onClick={()=> setIsMenuOpen(false)} className="w-full">
                 <Button className="w-full rounded-xl bg-[#80573A] text-[#FFFCF6] font-semibold">
                   Register
                 </Button>

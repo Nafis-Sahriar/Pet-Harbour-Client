@@ -5,10 +5,11 @@ import {Button,FieldError,Input,Label,TextArea,TextField,} from "@heroui/react";
 import {Heart,PawPrint,} from "lucide-react";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 
 const AdoptionForm = ({ pet }) => {
+  const router = useRouter();
 
   const { data: session } = authClient.useSession();
   const currentUser = session?.user;
@@ -55,7 +56,7 @@ const AdoptionForm = ({ pet }) => {
     if(res?.ok){  
       toast.success("Adoption Request Submitted");
       console.log(data);
-      redirect(`/dashboard/my-request`);
+      router.refresh();
     } 
     else 
     {

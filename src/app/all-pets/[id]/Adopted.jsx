@@ -6,7 +6,7 @@ const AdoptedPage = ({ pet }) => {
 
     return (
 
-        <div className='bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl p-10 flex flex-col items-center justify-center text-center min-h-[500px]'>
+        <div className='bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl p-10 flex flex-col items-center justify-center text-center min-h-125'>
             <div className='w-24 h-24 rounded-full bg-[#F4E7D3] flex items-center justify-center'>
                 <HeartCrack  className='text-[#CFA77A]' size={42}/>
             </div>
