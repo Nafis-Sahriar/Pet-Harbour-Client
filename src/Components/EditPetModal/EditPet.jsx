@@ -48,7 +48,9 @@ const EditPet = ({ pet }) => {
 
   return (
     <Modal>
-      <Button className="bg-[#F4E7D3] text-[#2F2D2A] hover:bg-[#E8D1B1] rounded-2xl font-semibold">
+      <Button
+        isDisabled={pet?.adoptionStatus === "adopted"}
+       className="bg-[#F4E7D3] text-[#2F2D2A] hover:bg-[#E8D1B1] rounded-2xl font-semibold">
         <PencilToSquare className="size-4" />
         Edit
       </Button>
