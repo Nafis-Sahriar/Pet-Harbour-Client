@@ -21,7 +21,16 @@ const PetDetailsPage = async ({ params }) => {
 
     const user = session?.user;
 
-    const res = await fetch(`http://localhost:5000/allPets/${id}`);
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`http://localhost:5000/allPets/${id}`,{
+        headers:{
+            authorization: `Bearer ${token}`
+        }
+    });
+    
     const pet = await res.json();
 
 
