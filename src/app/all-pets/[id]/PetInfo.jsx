@@ -14,9 +14,7 @@ const PetInfo = ({ pet }) => {
                     <Avatar.Image src={pet?.imageUrl} alt={pet?.petName} className="object-cover"/>
             
                     <Avatar.Fallback className="bg-[#F4E7D3] text-[#80573A] text-4xl font-black">
-            
                         {pet?.petName?.charAt(0)}
-                        
                     </Avatar.Fallback>
                   </Avatar>
 
@@ -28,9 +26,7 @@ const PetInfo = ({ pet }) => {
                 </div>
 
                 <div className="flex items-center gap-2 text-sm text-[#6A5D52]">
-
                     <MapPin size={17} />
-
                 <p>{pet?.location}</p>
                 </div>
             </div>
