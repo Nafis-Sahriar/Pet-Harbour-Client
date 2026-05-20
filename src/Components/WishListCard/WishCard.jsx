@@ -1,4 +1,5 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Avatar, Button } from '@heroui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -13,10 +14,14 @@ const WishCard = ({ wish }) => {
     const handleRemoveFromWishList = async() =>{
 
         try{
+
+            const {data:tokenData}  = await authClient.token();
+            const token = tokenData?.token;
             const res = await fetch(`http://localhost:5000/removeFromWishList/${wish?._id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: `Bearer ${token}`
                 },
             });
 
