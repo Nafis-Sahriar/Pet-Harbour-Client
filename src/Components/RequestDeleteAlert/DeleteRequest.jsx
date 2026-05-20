@@ -4,7 +4,7 @@ import { TrashBin } from "@gravity-ui/icons";
 import {AlertDialog, Button} from "@heroui/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
-
+// jwt verified.
 
 export function DeleteRequest({request}) 
 {   

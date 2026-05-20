@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Button, Chip } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 const RequestCardForModal = ({request}) => {
 
@@ -25,12 +26,20 @@ const RequestCardForModal = ({request}) => {
     
 
     const handleAccept = async() =>{
+
+
+
         try{
              setLoading(true);
+
+             const {data:tokenData}  = await authClient.token();
+             const token = tokenData?.token;
+
             const res = await fetch(`http://localhost:5000/acceptRequest/${reqId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     petId: petId
@@ -54,11 +63,20 @@ const RequestCardForModal = ({request}) => {
     }
 
     const handleReject = async() =>{
+
+
        
         try{
                 setLoading(true);
+
+                const {data:tokenData}  = await authClient.token();
+                const token = tokenData?.token;
                 const res = await fetch(`http://localhost:5000/rejectRequest/${reqId}`,{
-                    method:"PATCH"               
+                    method:"PATCH",
+                    headers:{
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`,
+                    }           
                 })
                 const data = await res.json();
                 console.log(data);
