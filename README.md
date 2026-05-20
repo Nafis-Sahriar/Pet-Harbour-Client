@@ -20,6 +20,52 @@ also requesters can manage their request and see the status of their request. It
 Also another important feature of this project is the search and filter system where users can search pets by name, and can also filter by species. 
 The search functionality was implemented using MongoDB's `$regex` operator for flexible searching, and the filter system was implemented using the `$in` operator to allow filtering by multiple species.The search and filter state is persisted in the URL query parameters, allowing users to share their search results or return to them later.
 
+# Technologies and NPM Packages Used
+
+## Frontend
+
+- Next.js App Router
+- React.js
+- Tailwind CSS
+- HeroUI - For maximum component.
+- Lucide React
+- React Hot Toast
+- React Fast Marquee
+- React Icons
+- Framer Motion
+- Animate.css
+- HTML, CSS, JavaScript
+
+# Authentication 
+- Better Auth and JWT Token (For Authentication)
+- Google OAuth (For Google Authentication).
+
+---
+
+# Backend
+
+- Node.js
+- Express.js
+- MongoDB Native Driver
+- JWT Authentication
+- CORS
+- Dotenv
+- JOSE-cjs for JWT Verification.
+
+---
+
+# Database
+
+- MongoDB Atlas
+
+---
+
+# Deployment
+
+- Vercel
+
+---
+
 # Core Features
 
 # Authentication System
@@ -166,3 +212,17 @@ Users can filter pets bt:
 - They will see the matching pets immediately.
 - If the user chooses "Filter by Species" option, all pets will automatically get shown again.
 
+# Dashboard System
+
+Each logged in user has a personal dashboard.
+
+### Dashboard Features
+
+- My Listings
+- My Requests
+- Wishlist Section
+- Request Management
+- Pet Management
+- Adoption Status Monitoring
+
+---
