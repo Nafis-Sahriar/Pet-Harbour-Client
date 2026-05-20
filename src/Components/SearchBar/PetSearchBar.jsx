@@ -1,6 +1,6 @@
 "use client";
 // client component lagbe nahole states use korte parbo na.
-import { Button } from "@heroui/react";
+import { Button, Label, ListBox, Select } from "@heroui/react";
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -8,6 +8,8 @@ import React, { useState } from "react";
 const PetSearchBar = () => {
 
 // first e user jokhon kichu likhe serach a click korbe,amake oita store korte hobe.
+
+//   const [species, setSpecies] = useState(""); // filter korar jonno state lagbe.
 
   const [search,setSearch]=  useState("");
 
@@ -36,22 +38,63 @@ const PetSearchBar = () => {
       <div className="flex flex-col lg:flex-row items-stretch gap-4">
 
 
-        <div className="flex-1 relative">
-          <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-[#80573A]"  size={20} />
-            
-
-          <input  type="text" value={search} onChange={(e) => setSearch(e.target.value)}
-             placeholder="Search pets by name.."
-           
-            className="w-full italic  h-14 rounded-2xl border border-[#E8D1B1] bg-[#FFFCF6]  pl-14  pr-4  
-            text-[#2F2D2A] placeholder:text-[#80573A]  outline-none focus:border-[#CFA77A]"/>
-        </div>
-        <Button
-          onClick={handleSearch}
-          className=" h-14 px-8  rounded-2xl  bg-[#CFA77A] hover:bg-[#BB9368] text-white font-bold">
-          Search
-        </Button>
+         
+                {/* SearchBar div */}
+                <div className="flex-1 relative">
+                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-[#80573A]"  size={20} /> 
+                    <input  type="text" value={search} onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search pets by name.."
+                        className="w-full italic  h-14 rounded-2xl border border-[#E8D1B1] bg-[#FFFCF6]  pl-14  pr-4  
+                        text-[#2F2D2A] placeholder:text-[#80573A]  outline-none focus:border-[#CFA77A]"/>
+                    </div>
+                    <Button onClick={handleSearch} className=" h-14 px-8  rounded-2xl  bg-[#CFA77A] hover:bg-[#BB9368] text-white font-bold">
+                    Search
+                    </Button>
       </div>
+
+      <div className="mt-5 flex items-center justify-center">
+                {/* Filter div */}
+
+                <Select className="w-[256px]" placeholder="Select one">
+
+
+                                <Label>Filter by Species</Label>
+                                <Select.Trigger>
+                                    <Select.Value />
+                                    <Select.Indicator />
+                                </Select.Trigger>
+                                <Select.Popover>
+                                    <ListBox>
+                                    <ListBox.Item id="florida" textValue="Florida">
+                                        Florida
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    <ListBox.Item id="delaware" textValue="Delaware">
+                                        Delaware
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    <ListBox.Item id="california" textValue="California">
+                                        California
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    <ListBox.Item id="texas" textValue="Texas">
+                                        Texas
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    <ListBox.Item id="new-york" textValue="New York">
+                                        New York
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    <ListBox.Item id="washington" textValue="Washington">
+                                        Washington
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    </ListBox>
+                                </Select.Popover>
+                                </Select>
+
+
+            </div>
     </div>
   );
 };
