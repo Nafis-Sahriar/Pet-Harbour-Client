@@ -1,15 +1,13 @@
 import PetCard from '@/Components/PetCard';
+import PetSearchBar from '@/Components/SearchBar/PetSearchBar';
 import { fetchPets } from '@/lib/pets/data';
 import React from 'react';
 
-const AllPetsPage =async () => {
+const AllPetsPage =async ({searchParams}) => {
 
+  const {searchTerm} = await searchParams;
 
-    // api call to fetch all pets, then map through the data and show the pet cards here.
-
-    const pets = await fetchPets();
-
-
+  const pets = await fetchPets(searchTerm || "");
 
     return (
         <section className="w-full py-10 bg-[#FFFCF6]">
@@ -29,6 +27,10 @@ const AllPetsPage =async () => {
             their family!
           </p>
 
+          <div>
+            <PetSearchBar></PetSearchBar>
+          </div>
+          
         </div>
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
