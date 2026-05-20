@@ -25,7 +25,7 @@ const PetDetailsPage = async ({ params }) => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://localhost:5000/allPets/${id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/allPets/${id}`,{
         headers:{
             authorization: `Bearer ${token}`
         }
@@ -34,7 +34,7 @@ const PetDetailsPage = async ({ params }) => {
     const pet = await res.json();
 
 
-    const requestResponse = await fetch(`http://localhost:5000/adoptionRequest/check?petId=${id}&requesterId=${user?.id}`,{
+    const requestResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptionRequest/check?petId=${id}&requesterId=${user?.id}`,{
         headers:{
             authorization: `Bearer ${token}`
         }

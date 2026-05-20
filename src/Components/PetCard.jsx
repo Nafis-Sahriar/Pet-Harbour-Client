@@ -7,14 +7,16 @@ import { Heart } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
+
+
 const PetCard = ({pet}) => {
 
-   const { data: session, isPending } = authClient.useSession();
+   const { data: session } = authClient.useSession();
 
-  //  if(isPending){
-  //   return <div>Loading...</div>
-  //  }
-    const currentUser = session?.user;
+    const currentUser = 
+typeof window !== "undefined"
+    ? session?.user
+    : null;
 
     const userId = currentUser?.id;
 
@@ -50,7 +52,7 @@ const PetCard = ({pet}) => {
                 const {data:tokenData}  = await authClient.token();
                 const token = tokenData?.token;
 
-                const res = await fetch("http://localhost:5000/addToWishlist", {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addToWishlist`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -82,8 +84,6 @@ const PetCard = ({pet}) => {
   return (
 
     <div className="bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
-
-   
       <div className="relative overflow-hidden">
 
        <Avatar className="w-full h-70 rounded-t-xl rounded-b-none group-hover:scale-105 transition duration-500">

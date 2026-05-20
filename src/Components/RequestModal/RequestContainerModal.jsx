@@ -16,7 +16,7 @@ export async function RequestContainerModal ({ pet }) {
       });
       
 
-    const result = await fetch(`http://localhost:5000/requestsOfPet/${id}`, {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/requestsOfPet/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

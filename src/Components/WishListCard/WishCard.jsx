@@ -17,7 +17,7 @@ const WishCard = ({ wish }) => {
 
             const {data:tokenData}  = await authClient.token();
             const token = tokenData?.token;
-            const res = await fetch(`http://localhost:5000/removeFromWishList/${wish?._id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/removeFromWishList/${wish?._id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {Button,FieldError,Input,Label,TextArea,TextField,} from "@heroui/react";
 import {Heart,PawPrint,} from "lucide-react";
 import toast from "react-hot-toast";
@@ -14,8 +14,16 @@ const AdoptionForm = ({ pet }) => {
   const { data: session } = authClient.useSession();
   const currentUser = session?.user;
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const handleAdoptionRequest = async (e) => {
+
+   
+    setIsSubmitting(true);
+
+    try{
+      setIsSubmitting(true);
 
     e.preventDefault();
 
@@ -46,7 +54,7 @@ const AdoptionForm = ({ pet }) => {
     const {data:tokenData}  = await authClient.token();
     const token = tokenData?.token;
 
-    const res = await fetch("http://localhost:5000/adoptionRequest", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/adoptionRequest`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,6 +73,14 @@ const AdoptionForm = ({ pet }) => {
     else 
     {
       toast.error(data.message || "Failed to submit adoption request");
+    }
+  }
+    catch(error){
+      console.error("Error submitting adoption request:", error);
+      toast.error("An error occurred while submitting your request. Please try again.");
+    }
+    finally{
+      setIsSubmitting(false);
     }
     // console.log(finalAdoptionData);
   };
@@ -200,12 +216,12 @@ const AdoptionForm = ({ pet }) => {
 
         <Button
           type="submit"
-          className="rounded-2xl bg-[#CFA77A] hover:bg-[#b98c5c] text-white px-10 py-7 font-bold text-lg"
+          className="rounded-2xl bg-[#CFA77A] hover:bg-[#b98c5c] text-white px-5 md:px-10 py-7 font-bold text-lg"
         >
 
-          Submit Adoption Request
+          {isSubmitting ? "Submitting..." : "Submit Adoption Request"}
 
-          <PawPrint size={18} />
+            <PawPrint size={18} />
 
         </Button>
 

@@ -6,14 +6,14 @@ const FeaturedSectionHome = async () => {
 
     // Now I need an api that will fetch only 6 peths, and those pets willbe available for adoption.
 
-    const res = await fetch("http://localhost:5000/featuredPets", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featuredPets`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
     });
     const featuredPets = await res.json();
-    console.log(featuredPets);
+    // console.log(featuredPets);
 
 
   return (
@@ -53,7 +53,7 @@ const FeaturedSectionHome = async () => {
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
           {
-            featuredPets.map((pet) => (<PetCard key={pet._id} pet={pet} />))
+            featuredPets?.map((pet) => (<PetCard key={pet?._id} pet={pet} />))
           }
 
         </div>

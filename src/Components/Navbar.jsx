@@ -83,9 +83,7 @@ export function Navbar()
                   className="flex items-center gap-3 p-1.5 rounded-full hover:bg-[#F4E7D3]/60 transition-all duration-200 border border-[#E8D1B1]/30 cursor-pointer"
                 >
                   <Avatar className="w-9 h-9 rounded-full border-2 border-[#CFA77A] shadow-md">
-                    <Avatar.Image
-                      src={user?.imageUrl}
-                      alt={user?.name}
+                    <Avatar.Image src={user?.imageUrl} alt={user?.name}
                       referrerPolicy="no-referrer"
                       className="object-cover"
                     />
@@ -116,7 +114,7 @@ export function Navbar()
                     </Link>
                     
                     <Link 
-                      href="/settings" 
+                      href="/my-profile" 
                       onClick={() => setIsDropdownOpen(false)}
                       className="px-4 py-2.5 text-sm text-[#2F2D2A] hover:bg-[#F4E7D3]/40 flex items-center gap-3 transition-colors"
                     >
@@ -154,12 +152,7 @@ export function Navbar()
               <Link href="/dashboard">
                 <Avatar className="w-11 h-11 rounded-full border-4 border-[#80573A] shadow-lg">
 
-                      <Avatar.Image
-                        src={user?.imageUrl}
-                        alt={user?.name}
-                        referrerPolicy="no-referrer"
-                        className="object-cover"
-                      />
+                      <Avatar.Image src={user?.imageUrl} alt={user?.name} referrerPolicy="no-referrer" className="object-cover"/>
 
                       <Avatar.Fallback className="text-lg font-bold bg-[#F4E7D3] text-[#CFA77A]">
                         {user?.name.charAt(0)}
@@ -174,7 +167,8 @@ export function Navbar()
               className="p-2 rounded-xl text-[#2F2D2A] hover:bg-[#F4E7D3]/60 transition-colors cursor-pointer"
               aria-label="Toggle Menu"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  {isMenuOpen ?<X className="w-6 h-6" />:<Menu className="w-6 h-6" />}
+
             </button>
           </div>
 
@@ -199,7 +193,7 @@ export function Navbar()
               <Link href="/dashboard" onClick={() =>setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
                 <LayoutDashboard className="w-5 h-5 text-[#CFA77A]" /> Dashboard
               </Link>
-              <Link href="/settings" onClick={()=>setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
+              <Link href="/my-profile" onClick={()=>setIsMenuOpen(false)} className="px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 flex items-center gap-3 rounded-xl transition-all">
                 <User className="w-5 h-5 text-[#CFA77A]" /> My Profile
               </Link>
               <button className="w-full text-left px-4 py-3 text-base font-medium text-red-600 hover:bg-red-50 flex items-center gap-3 rounded-xl transition-all cursor-pointer" onClick={handleSignOut}>

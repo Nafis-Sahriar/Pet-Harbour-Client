@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const Footer = () => {
     return (
-    <footer className="bg-[#2F2D2A] text-[#FFFCF6] mt-20">
+    <footer className="bg-[#2F2D2A] text-[#FFFCF6]  z-50">
            <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
     <div>
@@ -36,7 +36,7 @@ const Footer = () => {
         </Link>
 
         <Link
-          href="/featured-pets"
+          href="/"
           className="hover:text-[#CFA77A] transition"
         >
           Featured Pets
@@ -50,7 +50,7 @@ const Footer = () => {
         </Link>
 
         <Link
-          href="/wishlist"
+          href="/dashboard/wish-list"
           className="hover:text-[#CFA77A] transition"
         >
           Wishlist
@@ -66,19 +66,19 @@ const Footer = () => {
 
       <div className="flex flex-col gap-3 text-sm">
         <Link
-          href="/success-stories"
+          href="/"
           className="hover:text-[#CFA77A] transition">
           Success Stories
         </Link>
 
         <Link
-          href="/pet-care"
+          href="/"
           className="hover:text-[#CFA77A] transition">
           Pet Care Tips
         </Link>
 
         <Link
-          href="/adoption-guide"
+          href="/"
           className="hover:text-[#CFA77A] transition">
           Adoption Guide
         </Link>

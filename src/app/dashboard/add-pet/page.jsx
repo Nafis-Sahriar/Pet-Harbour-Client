@@ -60,7 +60,7 @@ const AddPetPage = () => {
 
      const {data:tokenData} = await authClient.token();
      const token = tokenData?.token;
-    const res = await fetch("http://localhost:5000/addPet", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addPet`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -208,13 +208,13 @@ const AddPetPage = () => {
    
     <TextField name="age" type="number" isRequired>
       <Label>Age</Label>
-      <Input  type="number"  placeholder="2" className="rounded-2xl"/>
+      <Input  type="number" placeholder="2" className="rounded-2xl"/>
       <FieldError />
     </TextField>
 
 
     <div>
-      <Select  name="gender"   isRequired placeholder="Select Gender" className="w-full" >
+      <Select  name="gender" isRequired placeholder="Select Gender" className="w-full" >
         <Label>Gender</Label>
 
         <Select.Trigger className="rounded-2xl">

@@ -35,7 +35,7 @@ const RequestCardForModal = ({request}) => {
              const {data:tokenData}  = await authClient.token();
              const token = tokenData?.token;
 
-            const res = await fetch(`http://localhost:5000/acceptRequest/${reqId}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/acceptRequest/${reqId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const RequestCardForModal = ({request}) => {
 
                 const {data:tokenData}  = await authClient.token();
                 const token = tokenData?.token;
-                const res = await fetch(`http://localhost:5000/rejectRequest/${reqId}`,{
+                const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rejectRequest/${reqId}`,{
                     method:"PATCH",
                     headers:{
                         "Content-Type": "application/json",

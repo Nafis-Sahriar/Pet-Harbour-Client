@@ -17,7 +17,7 @@ export function DeleteRequest({request})
      // console.log(id);
          const {data:tokenData}  = await authClient.token();
           const token = tokenData?.token;
-        const res = await fetch(`http://localhost:5000/deleteRequest/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/deleteRequest/${id}`, {
             method: "DELETE",
             headers:{
                 "Content-Type": "application/json",
