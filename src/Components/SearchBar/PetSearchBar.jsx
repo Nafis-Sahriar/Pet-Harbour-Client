@@ -34,68 +34,93 @@ const PetSearchBar = () => {
   };
 
   return (
-    <div className="mt-10 bg-white border border-[#E8D1B1] rounded-3xl p-4 shadow-sm">
-      <div className="flex flex-col lg:flex-row items-stretch gap-4">
-
-
-         
-                {/* SearchBar div */}
-                <div className="flex-1 relative">
-                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-[#80573A]"  size={20} /> 
-                    <input  type="text" value={search} onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Search pets by name.."
-                        className="w-full italic  h-14 rounded-2xl border border-[#E8D1B1] bg-[#FFFCF6]  pl-14  pr-4  
-                        text-[#2F2D2A] placeholder:text-[#80573A]  outline-none focus:border-[#CFA77A]"/>
-                    </div>
-                    <Button onClick={handleSearch} className=" h-14 px-8  rounded-2xl  bg-[#CFA77A] hover:bg-[#BB9368] text-white font-bold">
-                    Search
-                    </Button>
+    <div className="mt-10 bg-white border border-[#E8D1B1] rounded-[32px] p-5 shadow-sm ">
+  <div className="flex flex-col xl:flex-row gap-5 items-stretch">
+    
+    <div className="flex-1 flex flex-col sm:flex-row gap-4">
+   
+      <div className="flex-1 relative">
+        <Search className="absolute left-5 top-1/3 -translate-y-1/2 text-[#80573A]" size={20} />
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search pets by name, breed or species..."
+          className="w-full h-14 rounded-2xl border border-[#E8D1B1] bg-[#FFFCF6] pl-14 pr-4 italic text-[#2F2D2A] placeholder:text-[#80573A] outline-none focus:border-[#CFA77A] transition"
+        />
       </div>
 
-      <div className="mt-5 flex items-center justify-center">
-                {/* Filter div */}
-
-                <Select className="w-[256px]" placeholder="Select one">
-
-
-                                <Label>Filter by Species</Label>
-                                <Select.Trigger>
-                                    <Select.Value />
-                                    <Select.Indicator />
-                                </Select.Trigger>
-                                <Select.Popover>
-                                    <ListBox>
-                                    <ListBox.Item id="florida" textValue="Florida">
-                                        Florida
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    <ListBox.Item id="delaware" textValue="Delaware">
-                                        Delaware
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    <ListBox.Item id="california" textValue="California">
-                                        California
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    <ListBox.Item id="texas" textValue="Texas">
-                                        Texas
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    <ListBox.Item id="new-york" textValue="New York">
-                                        New York
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    <ListBox.Item id="washington" textValue="Washington">
-                                        Washington
-                                        <ListBox.ItemIndicator />
-                                    </ListBox.Item>
-                                    </ListBox>
-                                </Select.Popover>
-                                </Select>
-
-
-            </div>
+    
+      <Button
+        onClick={handleSearch}
+        className="h-13 px-8 rounded-2xl bg-[#CFA77A] hover:bg-[#BB9368] text-white font-bold shrink-0"
+      >
+        Search
+      </Button>
     </div>
+
+   
+    <div className="w-full xl:w-35">
+        <Select className="w-full" placeholder="Filter by Species">
+                <Label className="font-bold italic text-[#80573A]">Filter by Species</Label>
+                <Select.Trigger className="h-14 rounded-2xl border border-[#E8D1B1] bg-[#FFFCF6]">
+                <Select.Value />
+                <Select.Indicator />
+                </Select.Trigger>
+
+                <Select.Popover>
+                    <ListBox>
+
+                        <ListBox.Item id="Cat">
+                            Cat
+                        <ListBox.ItemIndicator/>
+                        </ListBox.Item>
+    
+                        <ListBox.Item id="Dog">
+                            Dog
+                          <ListBox.ItemIndicator/>
+                        </ListBox.Item>
+
+                        <ListBox.Item id="Rabbit">
+                            Rabbit
+                        <ListBox.ItemIndicator/>
+                         </ListBox.Item>
+
+                        <ListBox.Item id="Bird">
+                            Bird
+                        <ListBox.ItemIndicator/>
+                        </ListBox.Item>
+
+                        <ListBox.Item id="Lizard">
+                            Lizard
+                        <ListBox.ItemIndicator/>
+                        </ListBox.Item>
+
+                        <ListBox.Item id="Fish">
+                            Fish<ListBox.ItemIndicator/>
+                        </ListBox.Item>
+
+                        <ListBox.Item id="Hamster">
+                            Hamster
+                        <ListBox.ItemIndicator/>
+                        </ListBox.Item>
+
+                        <ListBox.Item id="Guinea Pig">
+                            Guinea Pig
+                        <ListBox.ItemIndicator />
+                        </ListBox.Item>
+
+                        <ListBox.Item id="Turtle">
+                            Turtle
+                        <ListBox.ItemIndicator />
+                        </ListBox.Item>
+                        
+                    </ListBox>
+            </Select.Popover>
+      </Select>
+    </div>
+  </div>
+</div>
   );
 };
 
