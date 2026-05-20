@@ -34,7 +34,11 @@ const PetDetailsPage = async ({ params }) => {
     const pet = await res.json();
 
 
-    const requestResponse = await fetch(`http://localhost:5000/adoptionRequest/check?petId=${id}&requesterId=${user?.id}`);
+    const requestResponse = await fetch(`http://localhost:5000/adoptionRequest/check?petId=${id}&requesterId=${user?.id}`,{
+        headers:{
+            authorization: `Bearer ${token}`
+        }
+    });
     const adoptionRequest = await requestResponse.json();
 
     const isOwner=user?.id===pet?.ownerId;
