@@ -4,11 +4,13 @@ Pet Harbor is a full-stack Pet Adoption Platform where real users can browse pet
 
 #Live Demo: [https://pet-harbour.vercel.app/](https://pet-harbour.vercel.app/)
 
-Pet Harbor was built using the MERN Stack with Next.js App Router for the frontend and Express.js + MongoDB for the backend.
-
-The main goal of this project is to create a modern and user-friendly pet adoption platform with real-world features like authentication, adoption workflow, filtering, wishlist management, dashboard management, and responsive UI design.
-
 ---
+
+## Project Purpose
+
+The purpose of Pet Harbor is to create a modern and user-friendly pet adoption platform that implements real world logic, and solves the problem 
+of adopting a pet, because a lot of people don't know where to find a pet to adopt, or where to drop off a pet so that someone else who need it can get it. The platform allows users to easily browse pets, send adoption requests, manage their own pet listings, and save pets to their wishlist.
+
 
 # Project Overview
 
