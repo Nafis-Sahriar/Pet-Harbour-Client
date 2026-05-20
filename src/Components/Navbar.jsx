@@ -67,7 +67,6 @@ export function Navbar()
               All Pets
             </Link>
           </div>
-
           {
             isPending ? <p>Loading......</p>
             :<div className="hidden md:flex items-center gap-4">

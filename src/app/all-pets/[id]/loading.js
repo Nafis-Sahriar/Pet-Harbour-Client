@@ -15,10 +15,6 @@ const Loading = () => {
                     <PawPrint size={50}></PawPrint>
                     <p>Loading Pet Details.....</p>
                     <Image src={'/logo.png'} height={100} width={100} alt='logo' loading="eager"></Image>
-
-
-                  
-                   
                 </div>
             </div>
         </div>
