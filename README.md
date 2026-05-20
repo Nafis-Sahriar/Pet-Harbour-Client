@@ -35,6 +35,7 @@ The search functionality was implemented using MongoDB's `$regex` operator for f
 - Framer Motion
 - Animate.css
 - HTML, CSS, JavaScript
+- Canva - For Logo Design and Banner Image Design.
 
 # Authentication 
 - Better Auth and JWT Token (For Authentication)
@@ -285,7 +286,7 @@ Implemented multiple loading systems for better user experience.
 
 # Final Note
 
-Pet Harbor was built as a real-world full-stack MERN project to practice modern web development concepts using Next.js App Router and Express.js backend architecture. It is my first project where I implemented a complete workflow of a real world system and used Server, Database for data
+I built Pet Harbor  as my first real-world full-stack MERN project to practice modern web development concepts using Next.js App Router and Express.js backend architecture. It is the first time when I implemented a complete workflow of a real world system and used Server, Database and Front end. Also designed the UI.
 storing.
 
 This project helped to  improve my understanding of:
