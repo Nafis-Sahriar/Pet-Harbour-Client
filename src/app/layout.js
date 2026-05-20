@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { Navbar } from "@/Components/Navbar";
 import { ToastContainer } from "react-toastify";
+import Footer from "@/Components/Footer";
 
 
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         
         <Navbar></Navbar>
         {children}
+        <Footer></Footer>
         <Toaster></Toaster>
         </body>
     </html>
