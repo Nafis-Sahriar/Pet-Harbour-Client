@@ -3,18 +3,26 @@
 import { Inbox } from "lucide-react";
 import { Button, Modal,} from "@heroui/react";
 import RequestCardForModal from "./RequestCardForModal";
+import { authClient } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export async function RequestContainerModal ({ pet }) {
 
     const id = pet?._id;
 
+      const {token} = await auth.api.getToken({
+        headers: await headers()
+      });
+      
+
     const result = await fetch(`http://localhost:5000/requestsOfPet/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
         },
     });
-
     const requestData = await result.json();
     // console.log(requestData);
 
