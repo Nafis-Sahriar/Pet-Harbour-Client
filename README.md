@@ -20,4 +20,87 @@ also requesters can manage their request and see the status of their request. It
 Also another important feature of this project is the search and filter system where users can search pets by name, and can also filter by species. 
 The search functionality was implemented using MongoDB's `$regex` operator for flexible searching, and the filter system was implemented using the `$in` operator to allow filtering by multiple species.The search and filter state is persisted in the URL query parameters, allowing users to share their search results or return to them later.
 
+# Features
 
+# Authentication System
+
+Implemented secure authentication using Better Auth. User can Sign up using their email , password and also Implemented Google Authentication, 
+so that user can easily sign in using their Google Account. Without authentication users cannot acces the Dashboard, Pet Details, Adoption Form and all Dashboard contents.
+
+## Features
+
+- User Registration
+- User Login
+- Session Based Authentication
+- Persistent Login Session
+- Protected Routes
+- Protected Backend APIs used JWT Authentication.
+- Secure Dashboard Access
+- User-based Conditional Rendering
+
+---
+
+# Pet Management System
+
+Users can fully manage pet listings.
+
+## A Users Can
+
+- Add a new pet
+- Edit their own listed existing pet.
+- Delete their own pets
+- View all pets They have listed.
+- View featured pets
+- View detailed pet information
+- Add pet to wishlist.
+- View requested pets status.
+
+# Adoption Request System
+
+The adoption system contains advanced backend logic and dynamic UI rendering.
+
+## The person who do not own the pet Can
+
+- Send adoption requests
+- Choose adoption date
+- Write a custom adoption message
+- View request status.
+- View pet details.
+- Monitor pet adoption status.
+- View if the pet got adopted by someone else.
+
+## Pet Owners Can
+
+- View all requests for their pets with the requester's information and message.
+- Accept requests
+- Reject requests
+- Manage requests from dashboard
+- See how many request the have got for each pet both in the Listing page and in Pet Details page.
+
+---
+
+# Advanced Adoption Workflow Logic
+
+When a user sends an adoption request -
+- The request is stored in the database with a pending status
+- The UI of the user changes to show the pending status. 
+- The pet owner receives the request and can see the requester's information and message in the request modal.
+- The user can also see the number of requests per pet on the request modal icon.
+
+When an owner accepts one adoption request:
+
+- The selected request becomes accepted.
+- Requester's UI automatically gets updated to show the accepted status.
+- All other requests for the same pet automatically become rejected
+- And the UI of all other requesters automatically gets updated to show the rejected status.
+- Pet adoption status changes to adopted.
+- The pet is removed from the available pets list.
+- The owner can no longer receive new request for that pet.
+- The owner can no longer edit that one pet's information.
+- All other users who not even requested will see that the pet got adopted by someone else UI in
+the pet details page.
+- When a pet gets adopted, no one can also add it to their wishlist. 
+- The pet is marked as adopted in the database.
+- The pet becomes unavailable for future adoption.
+
+---
