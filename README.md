@@ -20,7 +20,7 @@ also requesters can manage their request and see the status of their request. It
 Also another important feature of this project is the search and filter system where users can search pets by name, and can also filter by species. 
 The search functionality was implemented using MongoDB's `$regex` operator for flexible searching, and the filter system was implemented using the `$in` operator to allow filtering by multiple species.The search and filter state is persisted in the URL query parameters, allowing users to share their search results or return to them later.
 
-# Features
+# Core Features
 
 # Authentication System
 
@@ -104,3 +104,65 @@ the pet details page.
 - The pet becomes unavailable for future adoption.
 
 ---
+
+# Conditional Rendering System
+
+The project contains advanced UI rendering logic depending on different conditions.
+
+## Features
+---
+
+### UI Changes Based On
+
+- Pet Owner
+- Logged In User
+- Pending Request
+- Accepted Request
+- Rejected Request
+- Already Adopted Pet
+- Non owner
+
+
+Different components automatically render depending on the current state of the pet or request.
+
+---
+
+# Wishlist System
+
+Users can save pets into a wishlist.
+
+## Features
+
+- Add pets to wishlist from homepage's featured section or All pets Page or by searching and filtering pets.
+- Prevent duplicate wishlist entries.
+- View all wishlist items inside their dashboard route.
+- Navigate directly to pet details page or remove the pet from wishlist.
+- User-specific wishlist system. One user cannot see other user's wishlist and cannot add or remove pets from other user's wishlist.
+
+---
+
+# Search and Filter System
+
+Implemented using MongoDB query operators and URL query parameters.
+
+## Features
+
+### $regex Search
+
+Users can search pets by:
+
+- Pet Name
+- User can enter full name or a single character to search. 
+- The search is case-insensitive and matches any part of the pet name.
+- If the user starts typing, the result will not be shown until the user clicks search button.
+- All pets will automatically get shown again when the search query is cleared.
+
+### $in Filter
+
+Users can filter pets bt:
+
+- Species
+- Users can select one species to filter.
+- They will see the matching pets immediately.
+- If the user chooses "Filter by Species" option, all pets will automatically get shown again.
+
