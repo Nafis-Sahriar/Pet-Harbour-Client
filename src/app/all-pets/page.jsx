@@ -1,4 +1,5 @@
 import PetCard from '@/Components/PetCard';
+import { fetchPets } from '@/lib/pets/data';
 import React from 'react';
 
 const AllPetsPage =async () => {
@@ -6,19 +7,7 @@ const AllPetsPage =async () => {
 
     // api call to fetch all pets, then map through the data and show the pet cards here.
 
-    const res = await fetch("http://localhost:5000/allpets", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-
-    if(!res.ok){
-        return <div>Failed to load pets.Please try again later.</div>
-    }
-
-    const pets = await res.json();
-    // console.log(pets);
+    const pets = await fetchPets();
 
 
 
