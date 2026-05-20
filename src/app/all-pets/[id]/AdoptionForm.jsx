@@ -43,10 +43,14 @@ const AdoptionForm = ({ pet }) => {
       createdAt: new Date(),
     };
 
+    const {data:tokenData}  = await authClient.token();
+    const token = tokenData?.token;
+
     const res = await fetch("http://localhost:5000/adoptionRequest", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(finalAdoptionData),
     });

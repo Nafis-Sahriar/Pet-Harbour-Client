@@ -17,9 +17,15 @@ const MyListingsPage = async () => {
 
     const id = user?.id;
 
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    });
+    
     const res = await fetch(`http://localhost:5000/allPetOfOwner/${id}`,
         {
-            cache: "no-store"
+            headers:{
+                authorization: `Bearer ${token}`
+            }
         }
     );
 
