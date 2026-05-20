@@ -216,7 +216,7 @@ Users can filter pets bt:
 
 Each logged in user has a personal dashboard.
 
-### Dashboard Features
+### Features
 
 - My Listings
 - My Requests
@@ -226,3 +226,86 @@ Each logged in user has a personal dashboard.
 - Adoption Status Monitoring
 
 ---
+
+## UI Color Palette
+
+```bash
+#FFFCF6
+#F4E7D3
+#E8D1B1
+#CFA77A
+#80573A
+#2F2D2A
+```
+
+---
+
+# UI & UX Features
+
+- Fully Responsive Design
+- Dynamic Conditional Rendering
+- Loading States
+- Disabled Buttons During Requests
+- Toast Notifications
+- Smooth User Experience
+- Clean Dashboard Layout
+- Mobile Friendly Navigation
+- Reusable Components
+
+---
+
+# Loading , Error and State Management
+
+Implemented multiple loading systems for better user experience.
+
+## Features
+
+- Next.js `loading.js`
+- Dynamic Loading UI
+- Disabled Actions During API Calls
+- State-based Rendering
+- Real-time UI Updates
+- Refresh After Mutation
+- Error Handling with Toast Notifications
+- Next.js `error.js` for Global Error Handling
+- Next.js `not-found.js` for 404 Handling
+
+---
+
+## Implemented Optimizations
+
+- Server Side Rendering
+- Dynamic Rendering
+- Optimized Fetching
+- Reusable Components
+- Conditional Component Rendering
+- Reduced Unnecessary Requests
+
+---
+
+# Final Note
+
+Pet Harbor was built as a real-world full-stack MERN project to practice modern web development concepts using Next.js App Router and Express.js backend architecture. It is my first project where I implemented a complete workflow of a real world system and used Server, Database for data
+storing.
+
+This project helped to  improve my understanding of:
+
+- Backend Architecture
+- API Design
+- Database Design
+- Authentication Systems
+- Dynamic UI Rendering
+- Full Stack Data Flow
+- Real-world Business Logic
+- Modern React Patterns
+- Dashboard Systems
+- Scalable Component Design
+
+I will continue to learn and build ....... In sha Allah.
+
+### Author
+
+Nafis Sahriar Redwan
+
+May 21 - 2026
+YKSG-1, DSC, Dhaka.
