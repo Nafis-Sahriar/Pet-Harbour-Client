@@ -5,7 +5,7 @@ import React from 'react';
 import { Button, Table } from '@heroui/react';
 import { DeleteRequest } from '@/Components/RequestDeleteAlert/DeleteRequest';
 import Link from 'next/link';
-
+// jwt verified.
 const MyRequestPage = async () => {
 
     const session = await auth.api.getSession({
@@ -14,11 +14,16 @@ const MyRequestPage = async () => {
 
     const user = session?.user;
 
-
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
 
     const res = await fetch(
         `http://localhost:5000/myRequests/${user?.id}`,
         {
+            headers:{
+                authorization: `Bearer ${token}`
+            },
             cache: "no-store"
         }
     );

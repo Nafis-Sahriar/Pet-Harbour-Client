@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 import { redirect, useRouter } from "next/navigation";
 
-
+// jwt verified.
 const AdoptionForm = ({ pet }) => {
   const router = useRouter();
 

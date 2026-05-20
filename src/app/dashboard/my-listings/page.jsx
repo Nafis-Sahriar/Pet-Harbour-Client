@@ -7,6 +7,8 @@ import { Plus, PawPrint, CheckCircle2, Clock3, Panda } from 'lucide-react';
 import { Button } from '@heroui/react';
 import ListedPetCard from '@/Components/ListedPetCard';
 
+// jwt verified.
+
 const MyListingsPage = async () => {
 
     const session = await auth.api.getSession({
