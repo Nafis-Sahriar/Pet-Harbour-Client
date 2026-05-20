@@ -7,7 +7,7 @@ import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 
 export function Navbar() 
@@ -17,6 +17,8 @@ export function Navbar()
   const router = useRouter();
 
   const { data: session, isPending, refetch } = authClient.useSession();
+
+  const pathName = usePathname();
 
   // if (isPending) {
   //   return <div>Loading...</div>;
@@ -60,11 +62,15 @@ export function Navbar()
           </div>
     
           <div className="hidden md:flex gap-8 items-center">
-            <Link href="/" className="font-medium text-[#2F2D2A] hover:text-[#80573A] transition-colors duration-200">
+
+            <Link href="/" className={` text-[#2F2D2A] hover:text-[#80573A] transition-colors duration-200 ${pathName === "/" ? "text-[#80573A] underline font-bold" : ""}`}>
               Home
             </Link>
-            <Link href="/all-pets" className="font-medium text-[#2F2D2A] hover:text-[#80573A] transition-colors duration-200">
+            <Link href="/all-pets" className={` text-[#2F2D2A] hover:text-[#80573A] transition-colors duration-200 ${pathName === "/all-pets" ? "text-[#80573A] underline font-bold" : ""}`}>
               All Pets
+            </Link>
+            <Link href="/about-us" className={` text-[#2F2D2A] hover:text-[#80573A] transition-colors duration-200 ${pathName === "/about-us" ? "text-[#80573A] underline font-bold" : ""}`}>
+              About Us
             </Link>
           </div>
           {
@@ -183,6 +189,9 @@ export function Navbar()
           </Link>
           <Link href="/all-pets" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 rounded-xl transition-all">
             All Pets
+          </Link>
+          <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 text-base font-medium text-[#2F2D2A] hover:bg-[#F4E7D3]/50 rounded-xl transition-all">
+            About Us
           </Link>
 
           {user ? (

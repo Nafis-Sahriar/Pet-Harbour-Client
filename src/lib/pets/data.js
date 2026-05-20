@@ -1,7 +1,7 @@
-export const fetchPets = async (searchTerm ="") => 
+export const fetchPets = async (searchTerm ="", species="") => 
 {
     
-   const res = await fetch(`http://localhost:5000/allpets?search=${searchTerm}`,
+   const res = await fetch(`http://localhost:5000/allpets?search=${searchTerm}&species=${species}`,
       {
          cache:"no-store"
       }

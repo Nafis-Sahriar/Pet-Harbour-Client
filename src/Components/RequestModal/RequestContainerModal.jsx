@@ -24,6 +24,8 @@ export async function RequestContainerModal ({ pet }) {
         },
     });
     const requestData = await result.json();
+
+     const count = requestData?.filter(request => request.requestStatus ==="pending").length;
     // console.log(requestData);
 
   return (
@@ -31,7 +33,14 @@ export async function RequestContainerModal ({ pet }) {
     <Modal>
       <Button className="bg-[#F4E7D3] hover:bg-[#E8D1B1] text-[#2F2D2A] rounded-2xl font-semibold">
         <Inbox size={18} />
-        Requests
+        Requests 
+        {count > 0 && (
+          <span className=" inline-flex items-center justify-center px-2 py-1 text-xs font-bold  text-white bg-red-500 rounded-full">
+            {count}
+          </span>
+        )}
+
+
       </Button>
 
       <Modal.Backdrop>
