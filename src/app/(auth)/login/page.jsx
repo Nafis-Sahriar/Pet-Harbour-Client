@@ -63,7 +63,7 @@ const LogInPage = () => {
 
 
   return (
-    <div className="flex flex-col md:flex-row justify-center gap-5 items-center bg-[#614c22] w-[90%] md:w-[50%] mx-auto mt-20 rounded-2xl border border-[#2F2D2A]/20 shadow-xl overflow-hidden mb-20">
+    <div className="flex flex-col lg:flex-row justify-center gap-5 items-center bg-[#614c22] w-[90%] md:w-[50%] mx-auto mt-20 rounded-2xl border border-[#2F2D2A]/20 shadow-xl overflow-hidden mb-20">
       
       
  

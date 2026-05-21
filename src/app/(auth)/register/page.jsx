@@ -69,7 +69,7 @@ const RegisterPage = () => {
   return (
     <div className="flex flex-col mb-10 md:flex-row justify-center gap-5 items-center bg-[#614c22] w-[90%] md:w-[60%] mx-auto mt-10 rounded-2xl border border-[#2F2D2A]/20 shadow-xl overflow-hidden">
       
-     {/* Left side of my registration section */}
+  
       <div className="text-white space-y-5 bg-[#F4E7D3] p-10 w-full md:w-[40%] self-stretch flex flex-col justify-center">
         <div className="flex gap-2 items-center">
          <Image src={'/logo.png'} alt="Logo" width={150} height={150} />

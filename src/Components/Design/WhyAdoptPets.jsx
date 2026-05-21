@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const reasons = [
+const reasons=[
   {
     id: 1,
     quote: '“Saving one animal will not change the world, but for that one animal, the world changes forever.”',
@@ -44,9 +44,9 @@ const WhyAdoptPets = () => {
           <p className="mt-4 text-[#80573A] max-w-2xl mx-auto"> Every adoption creates a story of love, hope, and companionship.</p>
         </motion.div>
 
-      
-        <div className="space-y-8">
 
+
+        <div className="space-y-8">
           {reasons.map((reason, index) => 
            (
             <motion.div
