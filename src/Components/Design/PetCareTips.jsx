@@ -37,10 +37,9 @@ const tips = [
 
 const PetCareTips = () => {
   return (
-    <section className="bg-[#FFFCF6] py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-[#FFFCF6] py-20 px-6">
+      <div className="max-w-[90%] mx-auto">
 
-     
         <div className="text-center mb-14 animate__animated animate__fadeInDown">
           <h2 className="text-4xl md:text-5xl font-bold text-[#2F2D2A]">
             Pet Care Tips</h2>
@@ -74,7 +73,7 @@ const PetCareTips = () => {
 
             </div>
       </div>
-    </section>
+    </div>
   );
 };
 

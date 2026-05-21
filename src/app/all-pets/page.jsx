@@ -4,6 +4,11 @@ import { fetchPets } from '@/lib/pets/data';
 import { PawPrint } from 'lucide-react';
 import React from 'react';
 
+export const metadata ={
+    title: "All Pets - Pet Harbor",
+    description: "Explore our diverse range of pets waiting for adoption. We believe each pet deserves a loving home, and they are only click away from finding their family!"
+}
+
 const AllPetsPage =async ({searchParams}) => {
 
   const {searchTerm,species} = await searchParams;

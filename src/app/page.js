@@ -6,12 +6,15 @@ import Statistics from "@/Components/Design/Statistics";
 import SuccessStories from "@/Components/Design/SuccessStories";
 import WhyAdoptPets from "@/Components/Design/WhyAdoptPets";
 import FeaturedSectionHome from "@/Components/FeaturedSectionHome";
-import { Button } from "@heroui/react";
-import { Quote } from "lucide-react";
-import Image from "next/image";
-import { FcGoogle } from "react-icons/fc";
+
+export const metadata = {
+  title: "Home - Pet Harbor",
+  description: "Welcome to Pet Harbor - Your Trusted Pet Adoption Platform. Discover loving pets waiting for a forever home. ",
+   
+}; 
 
 export default function Home() {
+
 
   
   return (

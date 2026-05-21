@@ -310,7 +310,7 @@ const AddPetPage = () => {
 
             <Label>Owner Email</Label>
 
-            <Input value={`${user.email}`} className="rounded-2xl" />
+            <Input value={`${user.email}`} className="rounded-2xl" readOnly />
         <FieldError />
      </TextField>
 

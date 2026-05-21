@@ -78,7 +78,7 @@ const Footer = () => {
         </Link>
 
         <Link
-          href="/"
+          href="/adoption-policy"
           className="hover:text-[#CFA77A] transition">
           Adoption Guide
         </Link>

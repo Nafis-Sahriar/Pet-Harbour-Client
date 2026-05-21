@@ -6,6 +6,12 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import WishCard from '@/Components/WishListCard/WishCard';
 
+export const metadata = {
+    title: "My Wishlist - Pet Harbor",
+    description: "Keep track of your favorite pets and quickly revisit the companions you are interested in adopting.",
+}
+ 
+
 const WishListPage = async() => {
 
 

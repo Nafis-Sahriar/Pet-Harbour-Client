@@ -7,6 +7,11 @@ import { Plus, PawPrint, CheckCircle2, Clock3, Panda } from 'lucide-react';
 import { Button } from '@heroui/react';
 import ListedPetCard from '@/Components/ListedPetCard';
 
+export const metadata = {
+    title: "My Listings - Pet Harbor",
+    description: "Manage your pet listings on Pet Harbor. View, edit, and track the status of your listed pets in one convenient dashboard.",
+}
+
 // jwt verified.
 
 const MyListingsPage = async () => {

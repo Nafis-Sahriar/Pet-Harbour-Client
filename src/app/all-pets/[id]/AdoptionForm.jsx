@@ -142,7 +142,7 @@ const AdoptionForm = ({ pet }) => {
           <TextField name="requesterEmail">
 
             <Label className="text-[#2F2D2A]"> Your Email</Label>
-            <Input value={currentUser?.email || ""} readOnly  className="rounded-2xl"/>
+            <Input value={currentUser?.email ||""} readOnly  className="rounded-2xl"/>
             <FieldError /> 
             
           </TextField>

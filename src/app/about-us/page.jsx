@@ -1,14 +1,21 @@
 import Image from 'next/image';
 import React from 'react';
 
+export const metadata = {
+  title: "About Us - Pet Harbor",
+  description: "Learn about our pet adoption platform, mission, and the the person behind Pet Harbor.",
+}
+
 const AboutUsPage = () => {
+
+
 
   return (
 
 
     <div className="bg-[#2F2D2A] min-h-screen py-16 md:py-24 px-4 md:px-6">
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[90%] mx-auto">
 
         <div className="text-center">
 

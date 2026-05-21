@@ -50,7 +50,7 @@ const LogInPage = () => {
 
       if(data)
       {
-        toast.success("Signed in with Google successfully!");
+        toast.loading("Signing with Google.....");
        
       }
       else

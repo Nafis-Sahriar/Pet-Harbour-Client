@@ -5,6 +5,12 @@ import React from 'react';
 import { Button, Table } from '@heroui/react';
 import { DeleteRequest } from '@/Components/RequestDeleteAlert/DeleteRequest';
 import Link from 'next/link';
+
+export const metadata={
+    title:"My Requests - Pet Harbor",
+    description:"Track and manage all your pet adoption requests in one convenient dashboard.View the status of each request and take action as needed.",
+}
+
 // jwt verified.
 const MyRequestPage = async () => {
 

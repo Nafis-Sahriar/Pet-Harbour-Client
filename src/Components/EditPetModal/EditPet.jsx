@@ -39,7 +39,7 @@ const EditPet = ({ pet }) => {
       if(res.ok)
       {
         toast.success("Pet updated successfully!");
-        router.push(`/all-pets/${id}`);
+        router.push(`/dashboard/my-listings`);
       }
       else{
         toast.error(`Failed to update pet: ${data.message}`);

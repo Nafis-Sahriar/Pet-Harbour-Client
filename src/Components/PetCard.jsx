@@ -83,7 +83,7 @@ typeof window !== "undefined"
 
   return (
 
-    <div className="bg-[#FFFCF6] border border-[#E8D1B1] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+    <div className="bg-[#FFFCF6] border border-[#E8D1B1] w-[95%] md:w-full rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
       <div className="relative overflow-hidden">
 
        <Avatar className="w-full h-70 rounded-t-xl rounded-b-none group-hover:scale-105 transition duration-500">
@@ -193,9 +193,9 @@ typeof window !== "undefined"
             isDisabled={pet?.adoptionStatus !== "available"}
             className="flex-1 border-[#E8D1B1] text-[#2F2D2A] hover:bg-[#F4E7D3] rounded-2xl h-12 font-semibold"
           >
-           {
-              pet?.adoptionStatus === "available"?"Adopt Now": "Adopted"
-           }
+           <Link href={`/all-pets/${pet?._id}`} className="w-full h-full flex items-center justify-center">
+            {pet?.adoptionStatus === "available" ? "Adopt Now" : "Adopted"}
+           </Link>
           </Button>
 
         </div>

@@ -7,22 +7,19 @@ const reasons = [
   {
     id: 1,
     quote: '“Saving one animal will not change the world, but for that one animal, the world changes forever.”',
-    description:
-      'Thousands of pets wait every day for a safe and loving family. Your small decision can completely transform a life.',
+    description:'Thousands of pets wait every day for a safe and loving family. Your small decision can completely transform a life.',
   },
 
   {
     id: 2,
     quote: '“Pets teach us unconditional love, loyalty, and kindness.”',
-    description:
-      'Adopted pets become loyal companions who bring emotional comfort, happiness, and positive energy into your home.',
+    description:'Adopted pets become loyal companions who bring emotional comfort, happiness, and positive energy into your home.',
   },
 
   {
     id: 3,
     quote: '“A home filled with paws is a home filled with love.”',
-    description:
-      'Giving a rescued pet a forever home creates beautiful memories and a lifelong bond between you and your companion.',
+    description:'Giving a rescued pet a forever home creates beautiful memories and a lifelong bond between you and your companion.',
   },
 ];
 
