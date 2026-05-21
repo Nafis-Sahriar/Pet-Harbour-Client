@@ -76,7 +76,6 @@ typeof window !== "undefined"
                 toast.error("Failed to add to WishList. Please try again.");
                 console.error("Error adding to WishList:", error);
             }
-
   }
 
   return (
