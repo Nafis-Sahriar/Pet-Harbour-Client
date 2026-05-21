@@ -79,8 +79,6 @@ typeof window !== "undefined"
 
   }
 
-
-
   return (
 
     <div className="bg-[#FFFCF6] border border-[#E8D1B1] w-[95%] md:w-full rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
