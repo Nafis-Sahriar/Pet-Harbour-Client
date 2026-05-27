@@ -17,7 +17,7 @@ const PetSearchBar = () => {
   const handleSearch = () => {
     const params = new URLSearchParams();
     
-    // Handle text search term
+   
     if (search) {
       params.set("searchTerm", search);
     } else {

@@ -54,7 +54,7 @@ const RegisterPage = () => {
 
         if(data)
         {
-            toast.success("Signed up with Google successfully!");
+            toast.loading("Signing with Google.....");
             
         }
         else        

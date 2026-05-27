@@ -72,6 +72,13 @@ const DashBoardSideBar = () => {
           >
             Wish List
           </Link>
+          <Link
+            href="/dashboard/all-requests"
+            className={`px-4 py-3 rounded-xl font-medium transition-all duration-300
+              ${pathname === "/dashboard/all-requests" ? "bg-[#CFA77A] text-white" : "text-[#2F2D2A] hover:bg-[#F4E7D3]"}`}
+          >
+            Request History
+          </Link>
         </div>
       </div>
       <div>
